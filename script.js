@@ -4,11 +4,7 @@
 // USER SIGNUP + FIREBASE
 // =========================================
 
-import {
-    auth,
-    db
-} from "./firebase-config.js";
-
+import { auth, db } from "./firebase-config.js";
 
 import {
     createUserWithEmailAndPassword,
@@ -17,240 +13,168 @@ import {
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
-
 import {
     collection,
     addDoc,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-
 // =========================================
 // HTML ELEMENTS
 // =========================================
 
-const signupSection =
-    document.getElementById("signupSection");
-
-const heroSection =
-    document.getElementById("heroSection");
-
-const signupForm =
-    document.getElementById("signupForm");
-
-const signupBtn =
-    document.getElementById("signupBtn");
-
-const formMessage =
-    document.getElementById("formMessage");
-
-const welcomeUser =
-    document.getElementById("welcomeUser");
-
-const logoutBtn =
-    document.getElementById("logoutBtn");
-
+const signupSection = document.getElementById("signupSection");
+const heroSection = document.getElementById("heroSection");
+const signupForm = document.getElementById("signupForm");
+const signupBtn = document.getElementById("signupBtn");
+const formMessage = document.getElementById("formMessage");
+const welcomeUser = document.getElementById("welcomeUser");
+const logoutBtn = document.getElementById("logoutBtn");
 
 // =========================================
 // SHOW MESSAGE
 // =========================================
 
 function showMessage(message, color) {
+    if (!formMessage) return;
 
     formMessage.textContent = message;
-
     formMessage.style.color = color;
-
 }
-
 
 // =========================================
 // SAVE SIGNUP TO FIRESTORE
 // =========================================
 
 async function saveSignup(user, name, email) {
-
     try {
+        await addDoc(collection(db, "userActivity"), {
+            uid: user.uid,
+            name: name,
+            email: email,
+            action: "Signup",
+            date: new Date().toLocaleDateString(),
+            time: new Date().toLocaleTimeString(),
+            createdAt: serverTimestamp()
+        });
 
-        await addDoc(
-            collection(db, "userActivity"),
-            {
-
-                uid: user.uid,
-
-                name: name,
-
-                email: email,
-
-                action: "Signup",
-
-                date:
-                    new Date().toLocaleDateString(),
-
-                time:
-                    new Date().toLocaleTimeString(),
-
-                createdAt:
-                    serverTimestamp()
-
-            }
-        );
-
-        console.log(
-            "Signup saved successfully."
-        );
-
-        return true;
-
+        console.log("Signup saved successfully.");
     } catch (error) {
-
-        console.error(
-            "Firestore signup error:",
-            error
-        );
-
-        return false;
-
+        console.error("Firestore signup error:", error);
     }
-
 }
-
 
 // =========================================
 // SHOW HERO
 // =========================================
 
 function showHero(user) {
+    if (signupSection) {
+        signupSection.style.display = "none";
+    }
 
-    signupSection.style.display = "none";
+    if (heroSection) {
+        heroSection.style.display = "flex";
+    }
 
-    heroSection.style.display = "flex";
+    if (welcomeUser) {
+        const displayName =
+            user.displayName ||
+            user.email ||
+            "User";
 
-
-    const displayName =
-        user.displayName ||
-        user.email ||
-        "User";
-
-
-    welcomeUser.textContent =
-        "Welcome, " + displayName;
-
+        welcomeUser.textContent =
+            "Welcome, " + displayName;
+    }
 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
-
 }
-
 
 // =========================================
 // SHOW SIGNUP
 // =========================================
 
 function showSignup() {
+    if (signupSection) {
+        signupSection.style.display = "flex";
+    }
 
-    signupSection.style.display = "flex";
+    if (heroSection) {
+        heroSection.style.display = "none";
+    }
 
-    heroSection.style.display = "none";
-
-    welcomeUser.textContent = "";
-
+    if (welcomeUser) {
+        welcomeUser.textContent = "";
+    }
 }
-
 
 // =========================================
 // USER SIGNUP
 // =========================================
 
-signupForm.addEventListener(
-    "submit",
-    async function(event) {
-
+if (signupForm) {
+    signupForm.addEventListener("submit", async function (event) {
         event.preventDefault();
 
+        const name = document
+            .getElementById("userName")
+            .value
+            .trim();
+
+        const email = document
+            .getElementById("userEmail")
+            .value
+            .trim()
+            .toLowerCase();
+
+        const password = document
+            .getElementById("userPassword")
+            .value;
 
         // ---------------------------------
-        // GET FORM VALUES
-        // ---------------------------------
-
-        const name =
-            document
-                .getElementById("userName")
-                .value
-                .trim();
-
-
-        const email =
-            document
-                .getElementById("userEmail")
-                .value
-                .trim()
-                .toLowerCase();
-
-
-        const password =
-            document
-                .getElementById("userPassword")
-                .value;
-
-
-        // ---------------------------------
-        // BASIC VALIDATION
+        // VALIDATION
         // ---------------------------------
 
         if (!name) {
-
             showMessage(
                 "Please enter your full name.",
                 "#dc2626"
             );
-
             return;
         }
 
-
         if (!email) {
-
             showMessage(
                 "Please enter your email address.",
                 "#dc2626"
             );
-
             return;
         }
 
-
         if (password.length < 6) {
-
             showMessage(
                 "Password must contain at least 6 characters.",
                 "#dc2626"
             );
-
             return;
         }
 
-
         // ---------------------------------
-        // DISABLE BUTTON
+        // BUTTON
         // ---------------------------------
 
         signupBtn.disabled = true;
-
-        signupBtn.textContent =
-            "Creating Account...";
-
+        signupBtn.textContent = "Creating Account...";
 
         showMessage(
             "Creating your account...",
             "#2563eb"
         );
 
-
         try {
-
             // ---------------------------------
             // CREATE FIREBASE ACCOUNT
             // ---------------------------------
@@ -262,215 +186,136 @@ signupForm.addEventListener(
                     password
                 );
 
-
-            const user =
-                userCredential.user;
-
+            const user = userCredential.user;
 
             // ---------------------------------
             // SAVE USER NAME
             // ---------------------------------
 
-            await updateProfile(
-                user,
-                {
-                    displayName: name
-                }
-            );
-
+            await updateProfile(user, {
+                displayName: name
+            });
 
             // ---------------------------------
-            // SAVE SIGNUP RECORD
+            // SHOW HERO IMMEDIATELY
             // ---------------------------------
 
-            const saved =
-                await saveSignup(
-                    user,
-                    name,
-                    email
-                );
-
-
-            if (!saved) {
-
-                showMessage(
-                    "Account created, but signup record could not be saved.",
-                    "#dc2626"
-                );
-
-                signupBtn.disabled = false;
-
-                signupBtn.textContent =
-                    "Create Account";
-
-                return;
-            }
-
-
-            // ---------------------------------
-            // SUCCESS
-            // ---------------------------------
+            signupForm.reset();
 
             showMessage(
                 "Account created successfully!",
                 "#16a34a"
             );
 
-
-            signupForm.reset();
-
-
-            // ---------------------------------
-            // SHOW HERO
-            // ---------------------------------
-
             showHero(user);
 
+            // ---------------------------------
+            // SAVE ADMIN RECORD
+            // ---------------------------------
 
-        } catch (error) {
-
-            console.error(
-                "Signup error:",
-                error
+            await saveSignup(
+                user,
+                name,
+                email
             );
 
+        } catch (error) {
+            console.error("Signup error:", error);
 
             let message =
                 "Unable to create your account.";
-
-
-            // Firebase errors
 
             if (
                 error.code ===
                 "auth/email-already-in-use"
             ) {
-
                 message =
                     "This email is already registered. Please use another email.";
-
             }
-
 
             else if (
                 error.code ===
                 "auth/invalid-email"
             ) {
-
                 message =
                     "Please enter a valid email address.";
-
             }
-
 
             else if (
                 error.code ===
                 "auth/weak-password"
             ) {
-
                 message =
                     "Password is too weak. Use at least 6 characters.";
-
             }
-
 
             else if (
                 error.code ===
                 "auth/operation-not-allowed"
             ) {
-
                 message =
                     "Email/password signup is not enabled in Firebase Authentication.";
-
             }
-
 
             else if (
                 error.code ===
                 "auth/network-request-failed"
             ) {
-
                 message =
                     "Network error. Please check your internet connection.";
-
             }
-
 
             showMessage(
                 message,
                 "#dc2626"
             );
 
-
             signupBtn.disabled = false;
-
-            signupBtn.textContent =
-                "Create Account";
-
+            signupBtn.textContent = "Create Account";
         }
-
-    }
-);
-
+    });
+}
 
 // =========================================
 // LOGOUT
 // =========================================
 
-logoutBtn.addEventListener(
-    "click",
-    async function() {
-
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", async function () {
         try {
-
             await signOut(auth);
 
             showSignup();
 
-            signupForm.reset();
+            if (signupForm) {
+                signupForm.reset();
+            }
 
             showMessage(
                 "You have been logged out.",
                 "#2563eb"
             );
 
-
         } catch (error) {
-
-            console.error(
-                "Logout error:",
-                error
-            );
+            console.error("Logout error:", error);
 
             showMessage(
                 "Logout failed. Please try again.",
                 "#dc2626"
             );
-
         }
-
-    }
-);
-
+    });
+}
 
 // =========================================
 // CHECK LOGIN STATE
 // =========================================
 
-onAuthStateChanged(
-    auth,
-    function(user) {
-
-        if (user) {
-
-            showHero(user);
-
-        } else {
-
-            showSignup();
-
-        }
-
+onAuthStateChanged(auth, function (user) {
+    if (user) {
+        showHero(user);
+    } else {
+        showSignup();
     }
-);
+});
 ```
