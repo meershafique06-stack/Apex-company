@@ -197,7 +197,7 @@ body {
         url("./spiderman.jpg");
 
     background-size: cover;
-    background-position: 75% center;
+    background-position: 70% center;
     background-repeat: no-repeat;
 }
 
@@ -297,7 +297,7 @@ body {
         url("./spiderman.jpg");
 
     background-size: cover;
-    background-position: center;
+   background-position: 70% center;
     background-repeat: no-repeat;
 }
 
