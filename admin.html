@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Apex Company Admin Dashboard"
+  >
+
+  <title>Apex Company | Admin Panel</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="admin-page">
+
+  <!-- =========================
+       ADMIN LOGIN
+  ========================== -->
+
+  <section
+    class="admin-login-section"
+    id="adminLoginSection"
+  >
+
+    <div class="admin-login-card">
+
+      <div class="signup-logo">
+
+        <img
+          src="logo.jpeg"
+          alt="Apex Company Logo"
+        >
+
+      </div>
+
+      <p class="admin-label">
+        APEX COMPANY
+      </p>
+
+      <h1>
+        Admin Login
+      </h1>
+
+      <p class="admin-login-text">
+        Authorized admin access only.
+      </p>
+
+      <form id="adminLoginForm">
+
+        <div class="form-group">
+
+          <label for="adminEmail">
+            Admin Email
+          </label>
+
+          <input
+            type="email"
+            id="adminEmail"
+            placeholder="Enter admin email"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="adminPassword">
+            Admin Password
+          </label>
+
+          <input
+            type="password"
+            id="adminPassword"
+            placeholder="Enter admin password"
+            required
+          >
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="signup-btn"
+        >
+          Admin Login
+        </button>
+
+
+        <p
+          id="adminLoginMessage"
+          class="form-message"
+        ></p>
+
+      </form>
+
+
+      <a
+        href="index.html"
+        class="back-user-link"
+      >
+        ← Back to User Page
+      </a>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================
+       ADMIN DASHBOARD
+  ========================== -->
+
+  <main
+    class="admin-dashboard"
+    id="adminDashboard"
+  >
+
+    <div class="container">
+
+      <div class="admin-dashboard-header">
+
+        <div>
+
+          <p class="admin-label">
+            APEX COMPANY
+          </p>
+
+          <h1>
+            Admin Dashboard
+          </h1>
+
+          <p>
+            User signup and login activity.
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          id="adminLogoutBtn"
+          class="clear-btn"
+        >
+          Logout
+        </button>
+
+      </div>
+
+
+
+      <!-- =========================
+           STATISTICS
+      ========================== -->
+
+      <div class="stats-grid">
+
+        <div class="stat-card">
+
+          <span class="stat-title">
+            Total Users
+          </span>
+
+          <strong id="totalUsers">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <span class="stat-title">
+            Total Activities
+          </span>
+
+          <strong id="totalActivities">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <span class="stat-title">
+            Latest Activity
+          </span>
+
+          <strong id="latestActivity">
+            —
+          </strong>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =========================
+           USER ACTIVITY
+      ========================== -->
+
+      <section class="users-section">
+
+        <div class="section-heading">
+
+          <div>
+
+            <h2>
+              User Activity Records
+            </h2>
+
+            <p>
+              Every successful Google login is recorded.
+            </p>
+
+          </div>
+
+
+          <button
+            type="button"
+            id="clearUsersBtn"
+            class="clear-btn"
+          >
+            Clear Records
+          </button>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>#</th>
+
+                <th>Name</th>
+
+                <th>Email</th>
+
+                <th>Action</th>
+
+                <th>Date</th>
+
+                <th>Time</th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody
+              id="usersTableBody"
+            ></tbody>
+
+          </table>
+
+        </div>
+
+
+        <div
+          id="emptyState"
+          class="empty-state"
+        >
+          No activity records yet.
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer class="site-footer">
+
+    <p>
+      © 2026 Apex Company. All Rights Reserved.
+    </p>
+
+  </footer>
+
+
+
+  <!-- Firebase/Admin JavaScript -->
+
+  <script
+    type="module"
+    src="admin.js"
+  ></script>
+
+</body>
+
+</html>
