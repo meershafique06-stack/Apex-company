@@ -1,477 +1,635 @@
-// =========================================
-// APEX COMPANY
-// FIREBASE ADMIN LOGIN + DASHBOARD
-// =========================================
+import { auth, db } from "./firebase-config.js";
 
 import {
-  db
-} from "./firebase-config.js";
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
 import {
-  collection,
-  getDocs,
-  deleteDoc,
-  doc
+    collection,
+    getDocs,
+    query,
+    orderBy
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 
-// =========================================
-// ADMIN CREDENTIALS
-// =========================================
+// ==========================================
+// ADMIN SETTINGS
+// ==========================================
 
-const ADMIN_EMAIL = "admin@gmail.com";
-const ADMIN_PASSWORD = "admin123";
+// IMPORTANT:
+// Create this same email as an Admin user
+// inside Firebase Authentication.
+
+const ADMIN_EMAIL = "admin@apexcompany.com";
 
 
-// =========================================
-// HTML ELEMENTS
-// =========================================
+// ==========================================
+// ELEMENTS
+// ==========================================
 
 const adminLoginSection =
-  document.getElementById("adminLoginSection");
+    document.getElementById("adminLoginSection");
 
-const adminDashboard =
-  document.getElementById("adminDashboard");
+const adminDashboardSection =
+    document.getElementById("adminDashboardSection");
 
 const adminLoginForm =
-  document.getElementById("adminLoginForm");
+    document.getElementById("adminLoginForm");
+
+const adminEmail =
+    document.getElementById("adminEmail");
+
+const adminPassword =
+    document.getElementById("adminPassword");
+
+const adminLoginBtn =
+    document.getElementById("adminLoginBtn");
 
 const adminLoginMessage =
-  document.getElementById("adminLoginMessage");
+    document.getElementById("adminLoginMessage");
 
 const adminLogoutBtn =
-  document.getElementById("adminLogoutBtn");
+    document.getElementById("adminLogoutBtn");
 
-const totalUsers =
-  document.getElementById("totalUsers");
+const totalSignups =
+    document.getElementById("totalSignups");
 
-const totalActivities =
-  document.getElementById("totalActivities");
+const latestSignup =
+    document.getElementById("latestSignup");
 
-const latestActivity =
-  document.getElementById("latestActivity");
+const signupTableBody =
+    document.getElementById("signupTableBody");
 
-const usersTableBody =
-  document.getElementById("usersTableBody");
+const dashboardMessage =
+    document.getElementById("dashboardMessage");
 
-const emptyState =
-  document.getElementById("emptyState");
-
-const clearUsersBtn =
-  document.getElementById("clearUsersBtn");
+const refreshBtn =
+    document.getElementById("refreshBtn");
 
 
-// =========================================
-// SHOW DASHBOARD
-// =========================================
+// ==========================================
+// MESSAGE FUNCTION
+// ==========================================
 
-async function showDashboard() {
+function showLoginMessage(message, color) {
 
-  adminLoginSection.style.display = "none";
+    if (!adminLoginMessage) {
+        return;
+    }
 
-  adminDashboard.style.display = "block";
-
-  await displayRecords();
+    adminLoginMessage.textContent = message;
+    adminLoginMessage.style.color = color;
 
 }
 
 
-// =========================================
+// ==========================================
 // SHOW LOGIN
-// =========================================
+// ==========================================
 
-function showLogin() {
+function showAdminLogin() {
 
-  adminLoginSection.style.display = "flex";
+    if (adminLoginSection) {
+        adminLoginSection.style.display = "flex";
+    }
 
-  adminDashboard.style.display = "none";
+    if (adminDashboardSection) {
+        adminDashboardSection.style.display = "none";
+    }
 
 }
 
 
-// =========================================
-// ADMIN LOGIN
-// =========================================
+// ==========================================
+// SHOW DASHBOARD
+// ==========================================
 
-adminLoginForm.addEventListener(
-  "submit",
-  async function(event) {
+function showAdminDashboard() {
 
-    event.preventDefault();
-
-    const email =
-      document
-        .getElementById("adminEmail")
-        .value
-        .trim()
-        .toLowerCase();
-
-    const password =
-      document
-        .getElementById("adminPassword")
-        .value;
-
-    if (
-      email === ADMIN_EMAIL &&
-      password === ADMIN_PASSWORD
-    ) {
-
-      sessionStorage.setItem(
-        "apexAdminLoggedIn",
-        "true"
-      );
-
-      adminLoginMessage.textContent =
-        "Admin login successful.";
-
-      adminLoginMessage.style.color =
-        "#16a34a";
-
-      adminLoginForm.reset();
-
-      await showDashboard();
-
-      return;
-
+    if (adminLoginSection) {
+        adminLoginSection.style.display = "none";
     }
 
-    adminLoginMessage.textContent =
-      "Invalid admin email or password.";
-
-    adminLoginMessage.style.color =
-      "#dc2626";
-
-  }
-);
-
-
-// =========================================
-// GET FIRESTORE ACTIVITY
-// =========================================
-
-async function getActivity() {
-
-  try {
-
-    const activityCollection =
-      collection(
-        db,
-        "userActivity"
-      );
-
-    const snapshot =
-      await getDocs(
-        activityCollection
-      );
-
-    const records = [];
-
-    snapshot.forEach(
-      function(documentSnapshot) {
-
-        records.push({
-
-          id:
-            documentSnapshot.id,
-
-          ...documentSnapshot.data()
-
-        });
-
-      }
-    );
-
-    // Latest first
-
-    records.sort(
-      function(a, b) {
-
-        const timeA =
-          a.createdAt &&
-          typeof a.createdAt.toMillis === "function"
-            ? a.createdAt.toMillis()
-            : 0;
-
-        const timeB =
-          b.createdAt &&
-          typeof b.createdAt.toMillis === "function"
-            ? b.createdAt.toMillis()
-            : 0;
-
-        return timeB - timeA;
-
-      }
-    );
-
-    return records;
-
-  } catch (error) {
-
-    console.error(
-      "Firestore read error:",
-      error
-    );
-
-    alert(
-      "Could not load Firebase records. Check Firestore Rules."
-    );
-
-    return [];
-
-  }
+    if (adminDashboardSection) {
+        adminDashboardSection.style.display = "block";
+    }
 
 }
 
 
-// =========================================
-// DISPLAY RECORDS
-// =========================================
+// ==========================================
+// LOGIN
+// ==========================================
 
-async function displayRecords() {
+if (adminLoginForm) {
 
-  const activity =
-    await getActivity();
+    adminLoginForm.addEventListener(
+        "submit",
+        async function (event) {
 
+            event.preventDefault();
 
-  // Clear old rows
+            const email =
+                adminEmail.value.trim().toLowerCase();
 
-  usersTableBody.innerHTML = "";
-
-
-  // Total activities
-
-  totalActivities.textContent =
-    activity.length;
+            const password =
+                adminPassword.value;
 
 
-  // Unique users
+            if (!email || !password) {
 
-  const uniqueEmails =
-    new Set();
+                showLoginMessage(
+                    "Please enter email and password.",
+                    "#dc2626"
+                );
 
-  activity.forEach(
-    function(record) {
-
-      if (record.email) {
-
-        uniqueEmails.add(
-          record.email
-        );
-
-      }
-
-    }
-  );
-
-  totalUsers.textContent =
-    uniqueEmails.size;
+                return;
+            }
 
 
-  // No records
+            if (adminLoginBtn) {
 
-  if (activity.length === 0) {
+                adminLoginBtn.disabled = true;
 
-    emptyState.style.display =
-      "block";
+                adminLoginBtn.textContent =
+                    "Signing In...";
 
-    latestActivity.textContent =
-      "—";
-
-    return;
-
-  }
+            }
 
 
-  emptyState.style.display =
-    "none";
+            showLoginMessage(
+                "Checking admin account...",
+                "#2563eb"
+            );
 
 
-  // Latest activity
+            try {
 
-  latestActivity.textContent =
-    activity[0].time || "—";
+                const result =
+                    await signInWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
 
 
-  // Add rows
+                const user = result.user;
 
-  activity.forEach(
-    function(record, index) {
 
-      const row =
-        document.createElement("tr");
+                // ------------------------------------------
+                // CHECK ADMIN EMAIL
+                // ------------------------------------------
 
-      row.innerHTML = `
+                if (
+                    user.email.toLowerCase() !==
+                    ADMIN_EMAIL.toLowerCase()
+                ) {
 
-        <td>${index + 1}</td>
+                    await signOut(auth);
 
-        <td>
-          ${escapeHTML(record.name)}
-        </td>
+                    showLoginMessage(
+                        "This account is not authorized as an admin.",
+                        "#dc2626"
+                    );
 
-        <td>
-          ${escapeHTML(record.email)}
-        </td>
+                    if (adminLoginBtn) {
 
-        <td>
-          ${escapeHTML(record.action)}
-        </td>
+                        adminLoginBtn.disabled = false;
 
-        <td>
-          ${escapeHTML(record.date)}
-        </td>
+                        adminLoginBtn.textContent =
+                            "Login to Dashboard";
 
-        <td>
-          ${escapeHTML(record.time)}
-        </td>
+                    }
 
-      `;
+                    return;
+                }
 
-      usersTableBody.appendChild(row);
 
-    }
-  );
+                // ------------------------------------------
+                // ADMIN VERIFIED
+                // ------------------------------------------
+
+                showAdminDashboard();
+
+                await loadSignupRecords();
+
+
+            } catch (error) {
+
+                console.error(
+                    "Admin login error:",
+                    error
+                );
+
+
+                let message =
+                    "Admin login failed. Please try again.";
+
+
+                switch (error.code) {
+
+                    case "auth/invalid-credential":
+
+                        message =
+                            "Invalid admin email or password.";
+
+                        break;
+
+
+                    case "auth/user-not-found":
+
+                        message =
+                            "Admin account was not found.";
+
+                        break;
+
+
+                    case "auth/wrong-password":
+
+                        message =
+                            "Incorrect admin password.";
+
+                        break;
+
+
+                    case "auth/invalid-email":
+
+                        message =
+                            "Please enter a valid admin email.";
+
+                        break;
+
+
+                    case "auth/too-many-requests":
+
+                        message =
+                            "Too many attempts. Please try again later.";
+
+                        break;
+
+
+                    case "auth/network-request-failed":
+
+                        message =
+                            "Network error. Check your internet connection.";
+
+                        break;
+
+
+                    default:
+
+                        if (error.message) {
+                            message = error.message;
+                        }
+
+                }
+
+
+                showLoginMessage(
+                    message,
+                    "#dc2626"
+                );
+
+
+                if (adminLoginBtn) {
+
+                    adminLoginBtn.disabled = false;
+
+                    adminLoginBtn.textContent =
+                        "Login to Dashboard";
+
+                }
+
+            }
+
+        }
+    );
 
 }
 
 
-// =========================================
-// ESCAPE HTML
-// =========================================
+// ==========================================
+// LOAD SIGNUP RECORDS
+// ==========================================
 
-function escapeHTML(value) {
+async function loadSignupRecords() {
 
-  const div =
-    document.createElement("div");
-
-  div.textContent =
-    String(value ?? "");
-
-  return div.innerHTML;
-
-}
-
-
-// =========================================
-// CLEAR FIRESTORE RECORDS
-// =========================================
-
-clearUsersBtn.addEventListener(
-  "click",
-  async function() {
-
-    const activity =
-      await getActivity();
-
-
-    if (activity.length === 0) {
-
-      alert(
-        "There are no records to clear."
-      );
-
-      return;
-
+    if (!signupTableBody) {
+        return;
     }
 
 
-    const confirmed =
-      confirm(
-        "Are you sure you want to delete all user activity records?"
-      );
+    signupTableBody.innerHTML = `
+        <tr>
+            <td colspan="5" class="loading-cell">
+                Loading signup records...
+            </td>
+        </tr>
+    `;
 
 
-    if (!confirmed) {
-
-      return;
-
+    if (dashboardMessage) {
+        dashboardMessage.textContent = "";
     }
-
-
-    clearUsersBtn.disabled =
-      true;
-
-    clearUsersBtn.textContent =
-      "Clearing...";
 
 
     try {
 
-      for (
-        const record of activity
-      ) {
+        const signupQuery =
+            query(
+                collection(db, "userActivity"),
+                orderBy("createdAt", "desc")
+            );
 
-        await deleteDoc(
-          doc(
-            db,
-            "userActivity",
-            record.id
-          )
+
+        const snapshot =
+            await getDocs(signupQuery);
+
+
+        const records = [];
+
+
+        snapshot.forEach(function (doc) {
+
+            records.push({
+                id: doc.id,
+                ...doc.data()
+            });
+
+        });
+
+
+        // ------------------------------------------
+        // TOTAL SIGNUPS
+        // ------------------------------------------
+
+        if (totalSignups) {
+
+            totalSignups.textContent =
+                records.length;
+
+        }
+
+
+        // ------------------------------------------
+        // LATEST SIGNUP
+        // ------------------------------------------
+
+        if (latestSignup) {
+
+            if (records.length > 0) {
+
+                const latest =
+                    records[0];
+
+                latestSignup.textContent =
+                    latest.email ||
+                    latest.name ||
+                    "User";
+
+            } else {
+
+                latestSignup.textContent =
+                    "No records";
+
+            }
+
+        }
+
+
+        // ------------------------------------------
+        // NO RECORDS
+        // ------------------------------------------
+
+        if (records.length === 0) {
+
+            signupTableBody.innerHTML = `
+                <tr>
+                    <td colspan="5" class="empty-cell">
+                        No signup records found.
+                    </td>
+                </tr>
+            `;
+
+            return;
+        }
+
+
+        // ------------------------------------------
+        // BUILD TABLE
+        // ------------------------------------------
+
+        signupTableBody.innerHTML = "";
+
+
+        records.forEach(
+            function (record, index) {
+
+                const row =
+                    document.createElement("tr");
+
+
+                const numberCell =
+                    document.createElement("td");
+
+                numberCell.textContent =
+                    index + 1;
+
+
+                const nameCell =
+                    document.createElement("td");
+
+                nameCell.textContent =
+                    record.name || "N/A";
+
+
+                const emailCell =
+                    document.createElement("td");
+
+                emailCell.textContent =
+                    record.email || "N/A";
+
+
+                const dateCell =
+                    document.createElement("td");
+
+                dateCell.textContent =
+                    record.date || "N/A";
+
+
+                const timeCell =
+                    document.createElement("td");
+
+                timeCell.textContent =
+                    record.time || "N/A";
+
+
+                row.appendChild(numberCell);
+
+                row.appendChild(nameCell);
+
+                row.appendChild(emailCell);
+
+                row.appendChild(dateCell);
+
+                row.appendChild(timeCell);
+
+
+                signupTableBody.appendChild(row);
+
+            }
         );
 
-      }
-
-      alert(
-        "All activity records have been deleted."
-      );
-
-      await displayRecords();
 
     } catch (error) {
 
-      console.error(
-        "Delete error:",
-        error
-      );
+        console.error(
+            "Dashboard data error:",
+            error
+        );
 
-      alert(
-        "Could not delete records. Check Firestore Rules."
-      );
+
+        if (signupTableBody) {
+
+            signupTableBody.innerHTML = `
+                <tr>
+                    <td colspan="5" class="error-cell">
+                        Unable to load signup records.
+                    </td>
+                </tr>
+            `;
+
+        }
+
+
+        if (dashboardMessage) {
+
+            dashboardMessage.textContent =
+                "Please check your Firestore database and security rules.";
+
+            dashboardMessage.style.color =
+                "#dc2626";
+
+        }
 
     }
 
-
-    clearUsersBtn.disabled =
-      false;
-
-    clearUsersBtn.textContent =
-      "Clear Records";
-
-  }
-);
+}
 
 
-// =========================================
-// ADMIN LOGOUT
-// =========================================
+// ==========================================
+// REFRESH BUTTON
+// ==========================================
 
-adminLogoutBtn.addEventListener(
-  "click",
-  function() {
+if (refreshBtn) {
 
-    sessionStorage.removeItem(
-      "apexAdminLoggedIn"
+    refreshBtn.addEventListener(
+        "click",
+        async function () {
+
+            refreshBtn.disabled = true;
+
+            refreshBtn.textContent =
+                "Refreshing...";
+
+
+            await loadSignupRecords();
+
+
+            refreshBtn.disabled = false;
+
+            refreshBtn.textContent =
+                "Refresh";
+
+        }
     );
 
-    showLogin();
-
-  }
-);
+}
 
 
-// =========================================
-// CHECK ADMIN SESSION
-// =========================================
+// ==========================================
+// LOGOUT
+// ==========================================
 
-if (
-  sessionStorage.getItem(
-    "apexAdminLoggedIn"
-  ) === "true"
-) {
+if (adminLogoutBtn) {
 
-  showDashboard();
+    adminLogoutBtn.addEventListener(
+        "click",
+        async function () {
 
-} else {
+            try {
 
-  showLogin();
+                await signOut(auth);
+
+                showAdminLogin();
+
+                if (adminLoginForm) {
+                    adminLoginForm.reset();
+                }
+
+                showLoginMessage(
+                    "You have been logged out.",
+                    "#2563eb"
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Logout error:",
+                    error
+                );
+
+            }
+
+        }
+    );
 
 }
+
+
+// ==========================================
+// AUTH STATE
+// ==========================================
+
+onAuthStateChanged(
+    auth,
+    async function (user) {
+
+        if (!user) {
+
+            showAdminLogin();
+
+            return;
+
+        }
+
+
+        // Only authorized admin can see dashboard.
+
+        if (
+            user.email.toLowerCase() !==
+            ADMIN_EMAIL.toLowerCase()
+        ) {
+
+            await signOut(auth);
+
+            showAdminLogin();
+
+            showLoginMessage(
+                "This account is not authorized as an admin.",
+                "#dc2626"
+            );
+
+            return;
+        }
+
+
+        showAdminDashboard();
+
+        await loadSignupRecords();
+
+    }
+);
