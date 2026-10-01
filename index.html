@@ -1,183 +1,227 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
 
-  <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="description"
+        content="Apex Company - Connect with us and discover what's next."
+    >
 
-  <meta
-    name="description"
-    content="Apex Company - Connect with us using Google"
-  >
+    <title>Apex Company | Sign Up</title>
 
-  <title>Apex Company | Google Login</title>
-
-  <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
-  <!-- ==============================
-       USER PAGE HEADER
-  =============================== -->
-
-  <header class="site-header">
-
-    <div class="container header-content">
-
-      <a
-        href="index.html"
-        class="logo-link"
-      >
-
-        <img
-          src="logo.jpeg"
-          alt="Apex Company Logo"
-          class="logo"
-        >
-
-      </a>
-
-    </div>
-
-  </header>
-
-
-
-  <main>
-
     <!-- ==============================
-         GOOGLE LOGIN
+         HEADER
     =============================== -->
+    <header class="site-header">
+        <div class="container header-content">
 
-    <section
-      class="signup-section"
-      id="signupSection"
-    >
-
-      <div class="signup-card">
-
-        <div class="signup-logo">
-
-          <img
-            src="logo.jpeg"
-            alt="Apex Company Logo"
-          >
+            <a
+                href="index.html"
+                class="logo-link"
+                aria-label="Apex Company Home"
+            >
+                <img
+                    src="logo.jpeg"
+                    alt="Apex Company Logo"
+                    class="logo"
+                >
+            </a>
 
         </div>
+    </header>
 
 
-        <h1>
-          Welcome to Apex Company
-        </h1>
+    <main>
 
-
-        <p class="signup-subtitle">
-          Sign in securely with your Google account.
-        </p>
-
-
-        <button
-          type="button"
-          id="googleLoginBtn"
-          class="google-login-btn"
+        <!-- ==============================
+             SIGNUP SECTION
+        =============================== -->
+        <section
+            class="signup-section"
+            id="signupSection"
         >
 
-          <span class="google-icon">
-            G
-          </span>
+            <div class="signup-card">
 
-          Continue with Google
+                <div class="signup-logo">
+                    <img
+                        src="logo.jpeg"
+                        alt="Apex Company Logo"
+                    >
+                </div>
 
-        </button>
+                <h1>Welcome to Apex Company</h1>
+
+                <p class="signup-subtitle">
+                    Create your account to connect with Apex Company.
+                </p>
 
 
-        <p
-          id="formMessage"
-          class="form-message"
-        ></p>
+                <form id="signupForm">
 
-      </div>
+                    <!-- NAME -->
+                    <div class="form-group">
 
-    </section>
+                        <label for="userName">
+                            Full Name
+                        </label>
 
+                        <input
+                            type="text"
+                            id="userName"
+                            name="name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+                    <div class="form-group">
+
+                        <label for="userEmail">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="userEmail"
+                            name="email"
+                            placeholder="Enter your email address"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+                    <div class="form-group">
+
+                        <label for="userPassword">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="userPassword"
+                            name="password"
+                            placeholder="Create a password"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+                        <small>
+                            Password must contain at least 6 characters.
+                        </small>
+
+                    </div>
+
+
+                    <!-- SIGNUP BUTTON -->
+                    <button
+                        type="submit"
+                        id="signupBtn"
+                        class="signup-btn"
+                    >
+                        Create Account
+                    </button>
+
+                </form>
+
+
+                <!-- MESSAGE -->
+                <p
+                    id="formMessage"
+                    class="form-message"
+                    aria-live="polite"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             HERO SECTION
+        =============================== -->
+        <section
+            class="hero-section"
+            id="heroSection"
+        >
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+
+                <p class="hero-small-text">
+                    WELCOME TO APEX COMPANY
+                </p>
+
+                <h2>
+                    Thank you for connecting
+                </h2>
+
+                <p>
+                    We are excited to have you connected with Apex Company.
+                </p>
+
+                <p
+                    id="welcomeUser"
+                    class="welcome-user"
+                ></p>
+
+
+                <button
+                    type="button"
+                    id="logoutBtn"
+                    class="hero-btn"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
 
 
     <!-- ==============================
-         HERO SECTION
+         FOOTER
     =============================== -->
-
-    <section
-      class="hero-section"
-      id="heroSection"
-    >
-
-      <div class="hero-overlay"></div>
-
-
-      <div class="hero-content">
-
-        <p class="hero-small-text">
-          WELCOME TO APEX COMPANY
-        </p>
-
-
-        <h2>
-          Thank you for connecting
-        </h2>
-
+    <footer class="site-footer">
 
         <p>
-          We are excited to have you connected with Apex Company.
+            © 2026 Apex Company. All Rights Reserved.
         </p>
 
-
-        <button
-          type="button"
-          id="googleLogoutBtn"
-          class="hero-btn"
-        >
-          Logout
-        </button>
-
-      </div>
-
-    </section>
-
-  </main>
+    </footer>
 
 
-
-  <!-- ==============================
-       FOOTER
-  =============================== -->
-
-  <footer class="site-footer">
-
-    <p>
-      © 2026 Apex Company. All Rights Reserved.
-    </p>
-
-  </footer>
-
-
-
-  <!-- ==============================
-       USER JAVASCRIPT
-  =============================== -->
-
-  <script
-    type="module"
-    src="script.js"
-  ></script>
-
+    <!-- ==============================
+         JAVASCRIPT
+    =============================== -->
+    <script
+        type="module"
+        src="script.js"
+    ></script>
 
 </body>
-
 </html>
-
+```
