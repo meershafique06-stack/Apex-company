@@ -14,27 +14,23 @@ import {
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
+
 const signupSection = document.getElementById("signupSection");
 const heroSection = document.getElementById("heroSection");
 const signupForm = document.getElementById("signupForm");
-const signupButton = document.getElementById("signupBtn");
+const signupBtn = document.getElementById("signupBtn");
 const formMessage = document.getElementById("formMessage");
 const welcomeUser = document.getElementById("welcomeUser");
-const logoutButton = document.getElementById("logoutBtn");
+const logoutBtn = document.getElementById("logoutBtn");
 
-function showMessage(message, type) {
+
+function showMessage(message, color) {
     if (!formMessage) return;
 
     formMessage.textContent = message;
-
-    if (type === "success") {
-        formMessage.style.color = "#16a34a";
-    } else if (type === "error") {
-        formMessage.style.color = "#dc2626";
-    } else {
-        formMessage.style.color = "#2563eb";
-    }
+    formMessage.style.color = color;
 }
+
 
 function showHero(user) {
     if (signupSection) {
@@ -46,8 +42,8 @@ function showHero(user) {
     }
 
     if (welcomeUser) {
-        welcomeUser.textContent =
-            "Welcome, " + (user.displayName || user.email || "User");
+        const name = user.displayName || user.email || "User";
+        welcomeUser.textContent = "Welcome, " + name;
     }
 
     window.scrollTo({
@@ -55,6 +51,7 @@ function showHero(user) {
         behavior: "smooth"
     });
 }
+
 
 function showSignup() {
     if (signupSection) {
@@ -70,6 +67,7 @@ function showSignup() {
     }
 }
 
+
 async function saveSignup(user, name, email) {
     try {
         await addDoc(collection(db, "userActivity"), {
@@ -82,54 +80,77 @@ async function saveSignup(user, name, email) {
             createdAt: serverTimestamp()
         });
 
-        console.log("Signup record saved.");
+        console.log("Signup record saved successfully.");
+
     } catch (error) {
         console.error("Firestore record error:", error);
     }
 }
 
+
 if (signupForm) {
+
     signupForm.addEventListener("submit", async function (event) {
+
         event.preventDefault();
 
         const nameInput = document.getElementById("userName");
         const emailInput = document.getElementById("userEmail");
         const passwordInput = document.getElementById("userPassword");
 
-        const name = nameInput ? nameInput.value.trim() : "";
+        const name = nameInput
+            ? nameInput.value.trim()
+            : "";
+
         const email = emailInput
             ? emailInput.value.trim().toLowerCase()
             : "";
+
         const password = passwordInput
             ? passwordInput.value
             : "";
 
-        if (name.length === 0) {
-            showMessage("Please enter your full name.", "error");
-            return;
-        }
 
-        if (email.length === 0) {
-            showMessage("Please enter your email address.", "error");
-            return;
-        }
-
-        if (password.length < 6) {
+        if (!name) {
             showMessage(
-                "Password must contain at least 6 characters.",
-                "error"
+                "Please enter your full name.",
+                "#dc2626"
             );
             return;
         }
 
-        if (signupButton) {
-            signupButton.disabled = true;
-            signupButton.textContent = "Creating Account...";
+
+        if (!email) {
+            showMessage(
+                "Please enter your email address.",
+                "#dc2626"
+            );
+            return;
         }
 
-        showMessage("Creating your account...", "info");
+
+        if (password.length < 6) {
+            showMessage(
+                "Password must contain at least 6 characters.",
+                "#dc2626"
+            );
+            return;
+        }
+
+
+        if (signupBtn) {
+            signupBtn.disabled = true;
+            signupBtn.textContent = "Creating Account...";
+        }
+
+        showMessage(
+            "Creating your account...",
+            "#2563eb"
+        );
+
 
         try {
+
             const userCredential =
                 await createUserWithEmailAndPassword(
                     auth,
@@ -139,86 +160,141 @@ if (signupForm) {
 
             const user = userCredential.user;
 
+
             await updateProfile(user, {
                 displayName: name
             });
 
+
             signupForm.reset();
 
+
+            /*
+             * IMPORTANT:
+             * Hero opens immediately after successful
+             * Firebase Authentication.
+             */
             showHero(user);
 
-            await saveSignup(user, name, email);
+
+            /*
+             * Save signup information for admin page.
+             * If Firestore fails, the hero still remains open.
+             */
+            await saveSignup(
+                user,
+                name,
+                email
+            );
+
 
         } catch (error) {
-            console.error("Signup error:", error);
 
-            let message = "Unable to create your account.";
+            console.error(
+                "Firebase signup error:",
+                error
+            );
 
-            switch (error.code) {
-                case "auth/email-already-in-use":
-                    message =
-                        "This email is already registered. Please use another email.";
-                    break;
+            let message =
+                "Unable to create your account.";
 
-                case "auth/invalid-email":
-                    message =
-                        "Please enter a valid email address.";
-                    break;
 
-                case "auth/weak-password":
-                    message =
-                        "Password must contain at least 6 characters.";
-                    break;
+            if (error.code === "auth/email-already-in-use") {
 
-                case "auth/operation-not-allowed":
-                    message =
-                        "Email/password signup is not enabled in Firebase.";
-                    break;
+                message =
+                    "This email is already registered. Please use another email.";
 
-                case "auth/network-request-failed":
-                    message =
-                        "Network error. Please check your internet connection.";
-                    break;
+            } else if (error.code === "auth/invalid-email") {
 
-                default:
-                    message =
-                        error.message || "Unable to create your account.";
+                message =
+                    "Please enter a valid email address.";
+
+            } else if (error.code === "auth/weak-password") {
+
+                message =
+                    "Password must contain at least 6 characters.";
+
+            } else if (error.code === "auth/operation-not-allowed") {
+
+                message =
+                    "Email/password signup is not enabled in Firebase.";
+
+            } else if (error.code === "auth/network-request-failed") {
+
+                message =
+                    "Network error. Please check your internet connection.";
+
+            } else if (error.message) {
+
+                message = error.message;
             }
 
-            showMessage(message, "error");
 
-            if (signupButton) {
-                signupButton.disabled = false;
-                signupButton.textContent = "Create Account";
+            showMessage(
+                message,
+                "#dc2626"
+            );
+
+
+            if (signupBtn) {
+                signupBtn.disabled = false;
+                signupBtn.textContent = "Create Account";
             }
         }
+
     });
 }
 
-if (logoutButton) {
-    logoutButton.addEventListener("click", async function () {
-        try {
-            await signOut(auth);
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener(
+        "click",
+        async function () {
+
+            try {
+
+                await signOut(auth);
+
+                showSignup();
+
+                if (signupForm) {
+                    signupForm.reset();
+                }
+
+                showMessage(
+                    "You have been logged out.",
+                    "#2563eb"
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Logout error:",
+                    error
+                );
+
+                showMessage(
+                    "Logout failed. Please try again.",
+                    "#dc2626"
+                );
+            }
+        }
+    );
+}
+
+
+onAuthStateChanged(
+    auth,
+    function (user) {
+
+        if (user) {
+            showHero(user);
+        } else {
             showSignup();
-
-            if (signupForm) {
-                signupForm.reset();
-            }
-
-            showMessage("You have been logged out.", "info");
-
-        } catch (error) {
-            console.error("Logout error:", error);
-            showMessage("Logout failed. Please try again.", "error");
         }
-    });
-}
 
-onAuthStateChanged(auth, function (user) {
-    if (user) {
-        showHero(user);
-    } else {
-        showSignup();
     }
-});
+);
 ```
