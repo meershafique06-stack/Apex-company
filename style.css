@@ -366,7 +366,7 @@ body {
         url("./spiderman.jpg");
 
     background-size: cover;
-    background-position: center;
+    background-position: 75% center;;
     background-repeat: no-repeat;
 
     background-attachment: fixed;
