@@ -1,1245 +1,422 @@
-```css
 /* =========================================================
-   APEX COMPANY - ADMIN PANEL
-   Exact CSS for the provided admin.html
-   ========================================================= */
-
-
-/* =========================================================
-   RESET
-   ========================================================= */
+APEX COMPANY
+USER PAGE STYLES
+========================================================= */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
 
 html {
-    scroll-behavior: smooth;
+scroll-behavior: smooth;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+min-height: 100vh;
+font-family: Arial, Helvetica, sans-serif;
+background: #ffffff;
+color: #111827;
 }
 
+img {
+max-width: 100%;
+display: block;
+}
+
+button,
+input {
+font: inherit;
+}
+
+button {
+cursor: pointer;
+}
+
+.container {
+width: min(1180px, 92%);
+margin: 0 auto;
+}
 
 /* =========================================================
-   ADMIN BODY
-   ========================================================= */
+HEADER
+========================================================= */
 
-.admin-body {
-    min-height: 100vh;
-    background: #0f172a;
-    color: #0f172a;
+.site-header {
+width: 100%;
+background: #ffffff;
+border-bottom: 1px solid #e5e7eb;
+position: relative;
+z-index: 20;
 }
 
+.header-content {
+min-height: 82px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 20px;
+}
+
+.logo-link {
+display: inline-flex;
+align-items: center;
+text-decoration: none;
+}
+
+.logo {
+width: 72px;
+height: 72px;
+object-fit: contain;
+border-radius: 10px;
+}
+
+.admin-access-link {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-height: 44px;
+padding: 0 22px;
+border-radius: 8px;
+background: #0b1f5e;
+color: #ffffff;
+text-decoration: none;
+font-size: 14px;
+font-weight: 700;
+transition: 0.25s ease;
+}
+
+.admin-access-link:hover {
+background: #d71920;
+transform: translateY(-1px);
+}
 
 /* =========================================================
-   ADMIN LOGIN SECTION
-   ========================================================= */
+SIGNUP SECTION
+========================================================= */
 
-.admin-login-section {
-    position: relative;
-
-    min-height: 100vh;
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-
-    padding: 50px 7%;
-
-    overflow: hidden;
-
-    background: #0f172a;
+.signup-section {
+min-height: calc(100vh - 82px);
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 60px 20px;
+background:
+linear-gradient(
+135deg,
+#eef3ff 0%,
+#ffffff 50%,
+#fff1f1 100%
+);
 }
 
+.signup-card {
+width: min(460px, 100%);
+background: #ffffff;
+border: 1px solid #e5e7eb;
+border-radius: 18px;
+padding: 38px;
+box-shadow: 0 20px 55px rgba(11, 31, 94, 0.13);
+}
+
+.signup-logo {
+display: flex;
+justify-content: center;
+margin-bottom: 22px;
+}
+
+.signup-logo img {
+width: 92px;
+height: 92px;
+object-fit: contain;
+border-radius: 14px;
+}
+
+.signup-card h1 {
+text-align: center;
+color: #0b1f5e;
+font-size: 32px;
+line-height: 1.2;
+margin-bottom: 10px;
+}
+
+.signup-subtitle {
+text-align: center;
+color: #6b7280;
+font-size: 15px;
+line-height: 1.6;
+margin-bottom: 28px;
+}
 
 /* =========================================================
-   SPIDER-MAN LOGIN BACKGROUND
-   ========================================================= */
+FORM
+========================================================= */
 
-.admin-background-image {
-    position: absolute;
-
-    top: 0;
-    right: 0;
-
-    width: 65%;
-    height: 100%;
-
-    background-image: url("./spiderman.jpg");
-
-    background-repeat: no-repeat;
-
-    /*
-       Cover keeps the Spider-Man image large.
-       Position is on the right so the login card
-       remains on the left.
-    */
-    background-size: cover;
-    background-position: center right;
-
-    z-index: 0;
+#signupForm {
+display: flex;
+flex-direction: column;
+gap: 18px;
 }
 
-
-/* =========================================================
-   LOGIN DARK OVERLAY
-   ========================================================= */
-
-.admin-background-overlay {
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 1;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            90deg,
-            #0f172a 0%,
-            #0f172a 28%,
-            rgba(15, 23, 42, 0.98) 38%,
-            rgba(15, 23, 42, 0.78) 50%,
-            rgba(15, 23, 42, 0.38) 66%,
-            rgba(15, 23, 42, 0.08) 100%
-        );
+.input-group {
+display: flex;
+flex-direction: column;
+gap: 7px;
 }
 
-
-/* =========================================================
-   ADMIN LOGIN CARD
-   ========================================================= */
-
-.admin-login-card {
-    position: relative;
-
-    z-index: 3;
-
-    width: 100%;
-    max-width: 450px;
-
-    padding: 40px;
-
-    background: #ffffff;
-
-    border-radius: 14px;
-
-    border-top: 6px solid #dc2626;
-
-    box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.35);
+.input-group label {
+color: #1f2937;
+font-size: 14px;
+font-weight: 700;
 }
 
-
-/* =========================================================
-   ADMIN LOGIN LOGO
-   ========================================================= */
-
-.admin-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 18px;
+.input-group input {
+width: 100%;
+height: 50px;
+padding: 0 15px;
+border: 1px solid #d1d5db;
+border-radius: 9px;
+outline: none;
+background: #ffffff;
+color: #111827;
+transition: 0.2s ease;
 }
 
-.admin-logo img {
-    width: 82px;
-    height: 82px;
-
-    object-fit: contain;
-
-    border-radius: 10px;
+.input-group input::placeholder {
+color: #9ca3af;
 }
 
-
-/* =========================================================
-   LOGIN HEADING
-   ========================================================= */
-
-.admin-login-heading {
-    text-align: center;
-
-    margin-bottom: 28px;
+.input-group input:focus {
+border-color: #0b1f5e;
+box-shadow: 0 0 0 3px rgba(11, 31, 94, 0.10);
 }
 
-.admin-badge {
-    display: inline-block;
-
-    margin-bottom: 8px;
-
-    color: #dc2626;
-
-    font-size: 12px;
-
-    font-weight: 900;
-
-    letter-spacing: 1.5px;
+.signup-btn {
+width: 100%;
+min-height: 52px;
+margin-top: 5px;
+border: none;
+border-radius: 9px;
+background: #d71920;
+color: #ffffff;
+font-weight: 700;
+transition: 0.25s ease;
 }
 
-.admin-login-heading h1 {
-    color: #0f172a;
-
-    font-size: 30px;
-
-    line-height: 1.2;
-
-    margin-bottom: 8px;
+.signup-btn:hover {
+background: #b9141a;
+transform: translateY(-1px);
 }
 
-.admin-login-heading p {
-    color: #64748b;
-
-    font-size: 14px;
-
-    line-height: 1.6;
+.signup-btn:disabled {
+opacity: 0.65;
+cursor: not-allowed;
+transform: none;
 }
-
-
-/* =========================================================
-   FORM GROUP
-   ========================================================= */
-
-.form-group {
-    margin-bottom: 18px;
-}
-
-.form-group label {
-    display: block;
-
-    margin-bottom: 7px;
-
-    color: #0f172a;
-
-    font-size: 14px;
-
-    font-weight: 700;
-}
-
-
-/* =========================================================
-   FORM INPUTS
-   ========================================================= */
-
-.form-group input {
-    width: 100%;
-    height: 50px;
-
-    padding: 0 15px;
-
-    border: 1px solid #cbd5e1;
-
-    border-radius: 7px;
-
-    outline: none;
-
-    background: #ffffff;
-
-    color: #0f172a;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 15px;
-
-    transition:
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.form-group input::placeholder {
-    color: #94a3b8;
-}
-
-.form-group input:focus {
-    border-color: #1d4ed8;
-
-    box-shadow:
-        0 0 0 3px rgba(29, 78, 216, 0.10);
-}
-
-
-/* =========================================================
-   ADMIN LOGIN BUTTON
-   ========================================================= */
-
-.admin-login-btn {
-    width: 100%;
-    min-height: 52px;
-
-    border: none;
-
-    border-radius: 7px;
-
-    background: #1d4ed8;
-
-    color: #ffffff;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 15px;
-
-    font-weight: 800;
-
-    cursor: pointer;
-
-    transition:
-        background 0.25s ease,
-        transform 0.25s ease;
-}
-
-.admin-login-btn:hover {
-    background: #1e40af;
-
-    transform: translateY(-1px);
-}
-
-.admin-login-btn:active {
-    transform: translateY(0);
-}
-
-.admin-login-btn:disabled {
-    opacity: 0.65;
-
-    cursor: not-allowed;
-
-    transform: none;
-}
-
-
-/* =========================================================
-   LOGIN MESSAGE
-   ========================================================= */
 
 .form-message {
-    min-height: 24px;
-
-    margin-top: 14px;
-
-    text-align: center;
-
-    font-size: 14px;
-
-    font-weight: 600;
+min-height: 22px;
+margin-top: 15px;
+text-align: center;
+font-size: 14px;
+font-weight: 600;
 }
-
 
 /* =========================================================
-   BACK TO WEBSITE
-   ========================================================= */
+HERO
+========================================================= */
 
-.back-home-link {
-    display: block;
-
-    margin-top: 20px;
-
-    text-align: center;
-
-    color: #1d4ed8;
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-    text-decoration: none;
+.hero-section {
+position: relative;
+min-height: 680px;
+display: none;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+background-image: url("spiderman.jpg");
+background-size: cover;
+background-position: center;
+color: #ffffff;
 }
 
-.back-home-link:hover {
-    color: #1e40af;
-
-    text-decoration: underline;
+.hero-overlay {
+position: absolute;
+inset: 0;
+background:
+linear-gradient(
+90deg,
+rgba(4, 12, 35, 0.92),
+rgba(4, 12, 35, 0.58),
+rgba(215, 25, 32, 0.25)
+);
 }
 
+.hero-content {
+position: relative;
+z-index: 2;
+width: min(900px, 90%);
+text-align: center;
+}
+
+.hero-small-text {
+margin-bottom: 18px;
+color: #ffffff;
+font-size: 14px;
+font-weight: 800;
+letter-spacing: 3px;
+}
+
+.hero-content h2 {
+margin-bottom: 20px;
+font-size: clamp(40px, 7vw, 76px);
+line-height: 1.05;
+font-weight: 800;
+}
+
+.hero-content > p:not(.hero-small-text):not(.connected-email) {
+max-width: 680px;
+margin: 0 auto;
+font-size: 19px;
+line-height: 1.7;
+}
+
+.connected-email {
+margin-top: 15px;
+color: #dbeafe;
+font-size: 14px;
+}
+
+.hero-btn {
+min-width: 150px;
+min-height: 48px;
+margin-top: 30px;
+padding: 0 25px;
+border: 2px solid #ffffff;
+border-radius: 8px;
+background: transparent;
+color: #ffffff;
+font-weight: 700;
+transition: 0.25s ease;
+}
+
+.hero-btn:hover {
+background: #ffffff;
+color: #0b1f5e;
+}
 
 /* =========================================================
-   ADMIN DASHBOARD
-   ========================================================= */
+FOOTER
+========================================================= */
 
-.admin-dashboard-section {
-    position: relative;
-
-    min-height: 100vh;
-
-    width: 100%;
-
-    background: #f1f5f9;
-
-    color: #0f172a;
-
-    overflow: hidden;
+.site-footer {
+padding: 22px 20px;
+text-align: center;
+background: #0b1f5e;
+color: #ffffff;
 }
 
+.site-footer p {
+font-size: 13px;
+line-height: 1.5;
+}
 
 /* =========================================================
-   DASHBOARD SPIDER-MAN BACKGROUND
-   ========================================================= */
+LOGGED-IN STATE
+========================================================= */
 
-.admin-dashboard-background {
-    position: fixed;
-
-    top: 0;
-    right: 0;
-
-    width: 58%;
-    height: 100vh;
-
-    background-image: url("./spiderman.jpg");
-
-    background-repeat: no-repeat;
-
-    background-size: cover;
-
-    background-position: center right;
-
-    z-index: 0;
-
-    pointer-events: none;
+body.user-logged-in .signup-section {
+display: none;
 }
 
+body.user-logged-in .hero-section {
+display: flex;
+}
 
 /* =========================================================
-   DASHBOARD BACKGROUND OVERLAY
-   ========================================================= */
+RESPONSIVE
+========================================================= */
 
-.admin-dashboard-overlay {
-    position: fixed;
+@media (max-width: 600px) {
 
-    inset: 0;
-
-    z-index: 1;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            90deg,
-            #f1f5f9 0%,
-            rgba(241, 245, 249, 0.99) 30%,
-            rgba(241, 245, 249, 0.94) 45%,
-            rgba(241, 245, 249, 0.72) 60%,
-            rgba(241, 245, 249, 0.30) 78%,
-            rgba(241, 245, 249, 0.06) 100%
-        );
+```
+.header-content {
+    min-height: 70px;
 }
 
-
-/* =========================================================
-   DASHBOARD HEADER
-   ========================================================= */
-
-.admin-dashboard-header {
-    position: relative;
-
-    z-index: 5;
-
-    width: 100%;
-
-    min-height: 82px;
-
-    padding: 14px 5%;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-    background: #ffffff;
-
-    border-bottom: 1px solid #e2e8f0;
+.logo {
+    width: 58px;
+    height: 58px;
 }
 
-
-/* =========================================================
-   HEADER LEFT
-   ========================================================= */
-
-.admin-header-left {
-    display: flex;
-
-    align-items: center;
-
-    gap: 14px;
-}
-
-.admin-header-logo {
-    width: 55px;
-    height: 55px;
-
-    object-fit: contain;
-
-    border-radius: 8px;
-}
-
-
-/* =========================================================
-   HEADER TITLE
-   ========================================================= */
-
-.admin-header-title span {
-    display: block;
-
-    color: #dc2626;
-
-    font-size: 11px;
-
-    font-weight: 900;
-
-    letter-spacing: 1.5px;
-
-    margin-bottom: 2px;
-}
-
-.admin-header-title h1 {
-    color: #0f172a;
-
-    font-size: 23px;
-
-    line-height: 1.2;
-}
-
-.admin-header-title p {
-    color: #64748b;
-
-    font-size: 12px;
-}
-
-
-/* =========================================================
-   DASHBOARD LOGOUT
-   ========================================================= */
-
-.admin-logout-btn {
-    min-height: 42px;
-
-    padding: 11px 22px;
-
-    border: none;
-
-    border-radius: 7px;
-
-    background: #dc2626;
-
-    color: #ffffff;
-
-    font-size: 14px;
-
-    font-weight: 800;
-
-    cursor: pointer;
-
-    transition:
-        background 0.25s ease,
-        transform 0.25s ease;
-}
-
-.admin-logout-btn:hover {
-    background: #b91c1c;
-
-    transform: translateY(-1px);
-}
-
-.admin-logout-btn:disabled {
-    opacity: 0.65;
-
-    cursor: not-allowed;
-
-    transform: none;
-}
-
-
-/* =========================================================
-   DASHBOARD CONTENT
-   ========================================================= */
-
-.admin-dashboard-content {
-    position: relative;
-
-    z-index: 3;
-
-    width: 100%;
-
-    max-width: 1250px;
-
-    margin: 0 auto;
-
-    padding: 45px 25px;
-}
-
-
-/* =========================================================
-   DASHBOARD INTRO
-   ========================================================= */
-
-.dashboard-intro {
-    position: relative;
-
-    margin-bottom: 30px;
-
-    min-height: 110px;
-
-    display: flex;
-
-    align-items: center;
-}
-
-.dashboard-intro > div {
-    position: relative;
-
-    z-index: 3;
-}
-
-.dashboard-label {
-    display: block;
-
-    color: #1d4ed8;
-
-    font-size: 11px;
-
-    font-weight: 900;
-
-    letter-spacing: 1.5px;
-
-    margin-bottom: 5px;
-}
-
-.dashboard-intro h2 {
-    color: #0f172a;
-
-    font-size: 32px;
-
-    line-height: 1.2;
-
-    margin-bottom: 5px;
-}
-
-.dashboard-intro p {
-    color: #64748b;
-
-    font-size: 15px;
-}
-
-
-/* =========================================================
-   STATISTICS
-   ========================================================= */
-
-.admin-stats {
-    position: relative;
-
-    z-index: 4;
-
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 22px;
-
-    margin-bottom: 30px;
-}
-
-
-/* =========================================================
-   STAT CARD
-   ========================================================= */
-
-.admin-stat-card {
-    min-height: 140px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 20px;
-
-    padding: 25px;
-
-    background: #ffffff;
-
-    border-radius: 12px;
-
-    border-left: 5px solid #dc2626;
-
-    box-shadow:
-        0 8px 25px rgba(15, 23, 42, 0.08);
-}
-
-.admin-stat-card.stat-blue {
-    border-left-color: #1d4ed8;
-}
-
-
-/* =========================================================
-   STAT ICON
-   ========================================================= */
-
-.stat-icon {
-    min-width: 85px;
-    height: 65px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 8px;
-
-    background: #fee2e2;
-
-    color: #dc2626;
-
-    font-size: 11px;
-
-    font-weight: 900;
-
-    letter-spacing: 0.7px;
-}
-
-.stat-blue .stat-icon {
-    background: #dbeafe;
-
-    color: #1d4ed8;
-}
-
-
-/* =========================================================
-   STAT TEXT
-   ========================================================= */
-
-.admin-stat-label {
-    display: block;
-
-    color: #64748b;
-
+.admin-access-link {
+    min-height: 40px;
+    padding: 0 14px;
     font-size: 13px;
-
-    margin-bottom: 5px;
 }
 
-.admin-stat-number {
-    display: block;
-
-    color: #0f172a;
-
-    font-size: 38px;
-
-    line-height: 1;
-
-    font-weight: 800;
+.signup-section {
+    min-height: calc(100vh - 70px);
+    padding: 35px 15px;
 }
 
-.admin-stat-text {
-    display: block;
-
-    max-width: 320px;
-
-    color: #0f172a;
-
-    font-size: 18px;
-
-    line-height: 1.3;
-
-    overflow-wrap: anywhere;
+.signup-card {
+    padding: 28px 20px;
+    border-radius: 14px;
 }
 
-
-/* =========================================================
-   SIGNUP TABLE CARD
-   ========================================================= */
-
-.admin-table-card {
-    position: relative;
-
-    z-index: 4;
-
-    width: 100%;
-
-    background: #ffffff;
-
-    border-radius: 12px;
-
-    box-shadow:
-        0 8px 25px rgba(15, 23, 42, 0.08);
-
-    overflow: hidden;
+.signup-card h1 {
+    font-size: 26px;
 }
 
-
-/* =========================================================
-   TABLE HEADER
-   ========================================================= */
-
-.admin-table-header {
-    padding: 25px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-    border-bottom: 1px solid #e2e8f0;
+.signup-logo img {
+    width: 78px;
+    height: 78px;
 }
 
-.table-label {
-    display: block;
+.hero-section {
+    min-height: 600px;
+}
 
-    color: #1d4ed8;
+.hero-content h2 {
+    font-size: 42px;
+}
 
+.hero-content > p:not(.hero-small-text):not(.connected-email) {
+    font-size: 16px;
+}
+
+.hero-small-text {
     font-size: 11px;
-
-    font-weight: 900;
-
-    letter-spacing: 1.5px;
-
-    margin-bottom: 4px;
-}
-
-.admin-table-header h2 {
-    color: #0f172a;
-
-    font-size: 24px;
-
-    line-height: 1.2;
-
-    margin-bottom: 4px;
-}
-
-.admin-table-header p {
-    color: #64748b;
-
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   REFRESH BUTTON
-   ========================================================= */
-
-.refresh-btn {
-    min-height: 42px;
-
-    padding: 11px 20px;
-
-    border: none;
-
-    border-radius: 7px;
-
-    background: #1d4ed8;
-
-    color: #ffffff;
-
-    font-size: 13px;
-
-    font-weight: 800;
-
-    cursor: pointer;
-
-    white-space: nowrap;
-
-    transition:
-        background 0.25s ease,
-        transform 0.25s ease;
-}
-
-.refresh-btn:hover {
-    background: #1e40af;
-
-    transform: translateY(-1px);
-}
-
-.refresh-btn:disabled {
-    opacity: 0.65;
-
-    cursor: not-allowed;
-
-    transform: none;
-}
-
-
-/* =========================================================
-   TABLE WRAPPER
-   ========================================================= */
-
-.table-wrapper {
-    width: 100%;
-
-    overflow-x: auto;
-}
-
-
-/* =========================================================
-   TABLE
-   ========================================================= */
-
-table {
-    width: 100%;
-
-    min-width: 700px;
-
-    border-collapse: collapse;
-
-    background: #ffffff;
-}
-
-
-/* =========================================================
-   TABLE HEAD
-   ========================================================= */
-
-thead {
-    background: #0f172a;
-
-    color: #ffffff;
-}
-
-th {
-    padding: 15px 18px;
-
-    text-align: left;
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.5px;
-}
-
-
-/* =========================================================
-   TABLE BODY
-   ========================================================= */
-
-td {
-    padding: 15px 18px;
-
-    text-align: left;
-
-    border-bottom: 1px solid #e2e8f0;
-
-    color: #334155;
-
-    font-size: 14px;
-}
-
-tbody tr {
-    transition: background 0.2s ease;
-}
-
-tbody tr:hover {
-    background: #f8fafc;
-}
-
-
-/* =========================================================
-   TABLE STATES
-   ========================================================= */
-
-.loading-cell,
-.empty-cell,
-.error-cell {
-    padding: 35px 20px;
-
-    text-align: center;
-
-    color: #64748b;
-
-    font-size: 14px;
-}
-
-.error-cell {
-    color: #dc2626;
-}
-
-
-/* =========================================================
-   DASHBOARD MESSAGE
-   ========================================================= */
-
-.dashboard-message {
-    min-height: 25px;
-
-    padding: 12px 20px;
-
-    color: #64748b;
-
-    font-size: 14px;
-
-    font-weight: 600;
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 900px) {
-
-    .admin-login-section {
-        padding: 40px 5%;
-    }
-
-    .admin-background-image {
-        width: 60%;
-
-        background-size: cover;
-    }
-
-    .admin-login-card {
-        max-width: 420px;
-    }
-
-    .admin-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .admin-dashboard-background {
-        width: 50%;
-    }
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-    /* LOGIN */
-
-    .admin-login-section {
-        min-height: 100vh;
-
-        padding: 30px 16px;
-
-        align-items: center;
-
-        justify-content: center;
-    }
-
-    .admin-background-image {
-        width: 100%;
-        height: 55%;
-
-        top: auto;
-        bottom: 0;
-
-        background-size: contain;
-
-        background-position: right bottom;
-
-        opacity: 0.70;
-    }
-
-    .admin-background-overlay {
-        background:
-            linear-gradient(
-                180deg,
-                #0f172a 0%,
-                #0f172a 40%,
-                rgba(15, 23, 42, 0.88) 58%,
-                rgba(15, 23, 42, 0.35) 80%,
-                rgba(15, 23, 42, 0.05) 100%
-            );
-    }
-
-    .admin-login-card {
-        max-width: 450px;
-
-        padding: 30px 22px;
-    }
-
-
-    /* DASHBOARD HEADER */
-
-    .admin-dashboard-header {
-        min-height: 72px;
-
-        padding: 12px 16px;
-    }
-
-    .admin-header-logo {
-        width: 45px;
-        height: 45px;
-    }
-
-    .admin-header-left {
-        gap: 9px;
-    }
-
-    .admin-header-title span {
-        font-size: 9px;
-    }
-
-    .admin-header-title h1 {
-        font-size: 18px;
-    }
-
-    .admin-header-title p {
-        display: none;
-    }
-
-    .admin-logout-btn {
-        min-height: 38px;
-
-        padding: 9px 14px;
-
-        font-size: 12px;
-    }
-
-
-    /* DASHBOARD BACKGROUND */
-
-    .admin-dashboard-background {
-        position: fixed;
-
-        width: 100%;
-
-        height: 55%;
-
-        top: auto;
-        bottom: 0;
-
-        background-size: contain;
-
-        background-position: right bottom;
-
-        opacity: 0.20;
-    }
-
-    .admin-dashboard-overlay {
-        background:
-            linear-gradient(
-                180deg,
-                rgba(241, 245, 249, 1) 0%,
-                rgba(241, 245, 249, 0.97) 55%,
-                rgba(241, 245, 249, 0.65) 100%
-            );
-    }
-
-
-    /* DASHBOARD CONTENT */
-
-    .admin-dashboard-content {
-        padding: 30px 16px;
-    }
-
-    .dashboard-intro {
-        min-height: 100px;
-    }
-
-    .dashboard-intro h2 {
-        font-size: 26px;
-    }
-
-    .dashboard-intro p {
-        font-size: 14px;
-    }
-
-
-    /* STATS */
-
-    .admin-stats {
-        grid-template-columns: 1fr;
-
-        gap: 16px;
-    }
-
-    .admin-stat-card {
-        min-height: 120px;
-
-        padding: 20px;
-    }
-
-
-    /* TABLE HEADER */
-
-    .admin-table-header {
-        padding: 20px;
-
-        flex-direction: column;
-
-        align-items: flex-start;
-    }
-
-    .refresh-btn {
-        width: 100%;
-    }
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 480px) {
-
-    .admin-login-card {
-        padding: 25px 18px;
-    }
-
-    .admin-logo img {
-        width: 70px;
-        height: 70px;
-    }
-
-    .admin-login-heading h1 {
-        font-size: 26px;
-    }
-
-    .admin-login-heading p {
-        font-size: 13px;
-    }
-
-    .form-group input {
-        height: 48px;
-
-        font-size: 14px;
-    }
-
-    .admin-login-btn {
-        min-height: 50px;
-    }
-
-    .admin-header-title h1 {
-        font-size: 16px;
-    }
-
-    .admin-stat-card {
-        gap: 14px;
-
-        padding: 18px;
-    }
-
-    .stat-icon {
-        min-width: 68px;
-
-        height: 54px;
-
-        font-size: 9px;
-    }
-
-    .admin-stat-number {
-        font-size: 32px;
-    }
-
-    .admin-stat-text {
-        font-size: 15px;
-    }
-
-    .admin-table-header h2 {
-        font-size: 21px;
-    }
+    letter-spacing: 2px;
 }
 ```
+
+}
+
+@media (max-width: 380px) {
+
+```
+.header-content {
+    gap: 10px;
+}
+
+.admin-access-link {
+    padding: 0 10px;
+    font-size: 12px;
+}
+
+.signup-card {
+    padding: 24px 16px;
+}
+
+.signup-card h1 {
+    font-size: 23px;
+}
+
+.hero-content h2 {
+    font-size: 36px;
+}
+```
+
+}
