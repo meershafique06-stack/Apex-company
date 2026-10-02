@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
@@ -11,52 +16,83 @@
 
     <title>Apex Company | Sign Up</title>
 
-    <link rel="stylesheet" href="./style.css">
+    <link
+        rel="stylesheet"
+        href="./style.css"
+    >
 </head>
 
 <body>
 
+    <!-- HEADER -->
+
     <header class="site-header">
+
         <div class="container header-content">
+
             <a
                 href="./index.html"
                 class="logo-link"
                 aria-label="Apex Company Home"
             >
+
                 <img
                     src="./logo.jpeg"
                     alt="Apex Company Logo"
                     class="logo"
                 >
+
             </a>
+
         </div>
+
     </header>
 
+
+    <!-- MAIN CONTENT -->
+
     <main>
+
+        <!-- SIGNUP SECTION -->
 
         <section
             class="signup-section"
             id="signupSection"
         >
+
             <div class="signup-card">
 
                 <div class="signup-logo">
+
                     <img
                         src="./logo.jpeg"
                         alt="Apex Company Logo"
                     >
+
                 </div>
 
-                <h1>Welcome to Apex Company</h1>
+
+                <h1>
+                    Welcome to Apex Company
+                </h1>
+
 
                 <p class="signup-subtitle">
                     Create your account to connect with Apex Company.
                 </p>
 
+
+                <!-- SIGNUP FORM -->
+
                 <form id="signupForm">
 
+                    <!-- FULL NAME -->
+
                     <div class="form-group">
-                        <label for="userName">Full Name</label>
+
+                        <label for="userName">
+                            Full Name
+                        </label>
 
                         <input
                             type="text"
@@ -66,10 +102,17 @@
                             autocomplete="name"
                             required
                         >
+
                     </div>
 
+
+                    <!-- EMAIL -->
+
                     <div class="form-group">
-                        <label for="userEmail">Email Address</label>
+
+                        <label for="userEmail">
+                            Email Address
+                        </label>
 
                         <input
                             type="email"
@@ -79,10 +122,17 @@
                             autocomplete="email"
                             required
                         >
+
                     </div>
 
+
+                    <!-- PASSWORD -->
+
                     <div class="form-group">
-                        <label for="userPassword">Password</label>
+
+                        <label for="userPassword">
+                            Password
+                        </label>
 
                         <input
                             type="password"
@@ -97,7 +147,11 @@
                         <small>
                             Password must contain at least 6 characters.
                         </small>
+
                     </div>
+
+
+                    <!-- CREATE ACCOUNT BUTTON -->
 
                     <button
                         type="submit"
@@ -109,6 +163,19 @@
 
                 </form>
 
+
+                <!-- ADMIN LOGIN -->
+
+                <a
+                    href="./admin.html"
+                    class="admin-access-link"
+                >
+                    Admin Login
+                </a>
+
+
+                <!-- FORM MESSAGE -->
+
                 <p
                     id="formMessage"
                     class="form-message"
@@ -116,8 +183,11 @@
                 ></p>
 
             </div>
+
         </section>
 
+
+        <!-- HERO SECTION -->
 
         <section
             class="hero-section"
@@ -126,24 +196,31 @@
 
             <div class="hero-overlay"></div>
 
+
             <div class="hero-content">
 
                 <p class="hero-small-text">
                     WELCOME TO APEX COMPANY
                 </p>
 
+
                 <h2>
                     Thank you for connecting
                 </h2>
+
 
                 <p>
                     We are excited to have you connected with Apex Company.
                 </p>
 
+
                 <p
                     id="welcomeUser"
                     class="welcome-user"
                 ></p>
+
+
+                <!-- LOGOUT BUTTON -->
 
                 <button
                     type="button"
@@ -159,11 +236,19 @@
 
     </main>
 
+
+    <!-- FOOTER -->
+
     <footer class="site-footer">
+
         <p>
             © 2026 Apex Company. All Rights Reserved.
         </p>
+
     </footer>
+
+
+    <!-- JAVASCRIPT -->
 
     <script
         type="module"
@@ -171,5 +256,6 @@
     ></script>
 
 </body>
+
 </html>
 ```
