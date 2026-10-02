@@ -1,234 +1,197 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="description"
-        content="Apex Company - Connect with us and discover our professional services."
-    >
+  <meta charset="UTF-8">
 
-    <title>Apex Company | Connect With Us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="./style.css">
+  <meta
+    name="description"
+    content="Apex Company - Connect with us using Google"
+  >
+
+  <title>Apex Company | Google Login</title>
+
+  <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+  <!-- ==============================
+       USER PAGE HEADER
+  =============================== -->
 
-    <header class="site-header">
+  <header class="site-header">
 
-        <div class="logo-wrapper">
+    <div class="container header-content">
 
-            <img
-                src="./logo.jpeg"
-                alt="Apex Company Logo"
-            >
+      <a
+        href="index.html"
+        class="logo-link"
+      >
 
-            <div class="logo-text">
-                APEX <span>COMPANY</span>
-            </div>
-
-        </div>
-
-        <!-- ADMIN PANEL BUTTON -->
-
-        <a
-            href="./admin.html"
-            class="admin-access-link"
+        <img
+          src="logo.jpeg"
+          alt="Apex Company Logo"
+          class="logo"
         >
-            Admin Panel
-        </a>
 
-    </header>
+      </a>
 
 
-    <!-- =========================
-         SIGNUP SECTION
-    ========================== -->
+      <a
+        href="admin.html"
+        class="admin-access-link"
+      >
+        Admin Panel
+      </a>
+
+    </div>
+
+  </header>
+
+
+
+  <main>
+
+    <!-- ==============================
+         GOOGLE LOGIN
+    =============================== -->
 
     <section
-        id="signupSection"
-        class="signup-section"
+      class="signup-section"
+      id="signupSection"
     >
 
-        <div class="signup-card">
+      <div class="signup-card">
 
-            <div class="signup-logo">
+        <div class="signup-logo">
 
-                <img
-                    src="./logo.jpeg"
-                    alt="Apex Company Logo"
-                >
-
-            </div>
-
-
-            <div class="signup-heading">
-
-                <h1>
-                    Connect With Apex Company
-                </h1>
-
-                <p>
-                    Create your account to connect with us.
-                </p>
-
-            </div>
-
-
-            <!-- SIGNUP FORM -->
-
-            <form id="signupForm">
-
-                <div class="form-group">
-
-                    <label for="userName">
-                        Full Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="userName"
-                        name="name"
-                        placeholder="Enter your full name"
-                        autocomplete="name"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="userEmail">
-                        Email Address
-                    </label>
-
-                    <input
-                        type="email"
-                        id="userEmail"
-                        name="email"
-                        placeholder="Enter your email"
-                        autocomplete="email"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="userPassword">
-                        Password
-                    </label>
-
-                    <input
-                        type="password"
-                        id="userPassword"
-                        name="password"
-                        placeholder="Create a password"
-                        autocomplete="new-password"
-                        minlength="6"
-                        required
-                    >
-
-                </div>
-
-
-                <button
-                    type="submit"
-                    id="signupBtn"
-                    class="signup-btn"
-                >
-                    Create Account
-                </button>
-
-
-                <p
-                    id="formMessage"
-                    class="form-message"
-                    aria-live="polite"
-                ></p>
-
-            </form>
+          <img
+            src="logo.jpeg"
+            alt="Apex Company Logo"
+          >
 
         </div>
 
-    </section>
+
+        <h1>
+          Welcome to Apex Company
+        </h1>
 
 
-    <!-- =========================
-         HERO SECTION
-         Hidden until signup
-    ========================== -->
-
-    <section
-        id="heroSection"
-        class="hero-section"
-        style="display: none;"
-    >
-
-        <div class="hero-content">
-
-            <h1>
-                Thank you for
-                <span>connecting</span>
-            </h1>
-
-            <p>
-                Your connection with Apex Company has been successfully created.
-                We are glad to have you with us.
-            </p>
-
-            <p
-                id="welcomeUser"
-                class="welcome-user"
-            ></p>
-
-            <button
-                type="button"
-                id="logoutBtn"
-                class="logout-btn"
-            >
-                Logout
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer class="site-footer">
-
-        <p>
-            © 2026 <strong>Apex Company</strong>.
-            All Rights Reserved.
+        <p class="signup-subtitle">
+          Sign in securely with your Google account.
         </p>
 
-    </footer>
+
+        <button
+          type="button"
+          id="googleLoginBtn"
+          class="google-login-btn"
+        >
+
+          <span class="google-icon">
+            G
+          </span>
+
+          Continue with Google
+
+        </button>
 
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
+        <p
+          id="formMessage"
+          class="form-message"
+        ></p>
 
-    <script
-        type="module"
-        src="./script.js"
-    ></script>
+      </div>
+
+    </section>
+
+
+
+    <!-- ==============================
+         HERO SECTION
+    =============================== -->
+
+    <section
+      class="hero-section"
+      id="heroSection"
+    >
+
+      <div class="hero-overlay"></div>
+
+
+      <div class="hero-content">
+
+        <p class="hero-small-text">
+          WELCOME TO APEX COMPANY
+        </p>
+
+
+        <h2>
+          Thank you for connecting
+        </h2>
+
+
+        <p>
+          We are excited to have you connected with Apex Company.
+        </p>
+
+
+        <!-- Hidden element for Firebase script compatibility -->
+
+        <span
+          id="userEmail"
+          style="display: none;"
+        ></span>
+
+
+        <button
+          type="button"
+          id="googleLogoutBtn"
+          class="hero-btn"
+        >
+          Logout
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- ==============================
+       FOOTER
+  =============================== -->
+
+  <footer class="site-footer">
+
+    <p>
+      © 2026 Apex Company. All Rights Reserved.
+    </p>
+
+  </footer>
+
+
+
+  <!-- ==============================
+       FIREBASE USER JAVASCRIPT
+  =============================== -->
+
+  <script
+    type="module"
+    src="script.js"
+  ></script>
+
 
 </body>
 
 </html>
-```
