@@ -1,3 +1,4 @@
+```css
 /* =========================================================
    APEX COMPANY
    FINAL PROFESSIONAL CSS
@@ -6,6 +7,7 @@
    USER SIGNUP + HERO
    ADMIN LOGIN + DASHBOARD
 ========================================================= */
+
 
 /* =========================
    GLOBAL RESET
@@ -82,63 +84,98 @@ img {
 }
 
 
-/* =========================
-   USER SIGNUP SECTION
-========================= */
+/* =========================================================
+   MAIN SIGNUP PAGE
+   SPIDER-MAN BACKGROUND
+========================================================= */
 
 .signup-section {
+    position: relative;
+
     min-height: calc(100vh - 82px);
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     padding: 55px 20px;
 
-    background:
+    overflow: hidden;
+
+    background-color: #0f172a;
+
+    background-image:
         linear-gradient(
-            135deg,
-            #eff6ff 0%,
-            #ffffff 48%,
-            #fef2f2 100%
-        );
+            90deg,
+            rgba(15, 23, 42, 0.96) 0%,
+            rgba(15, 23, 42, 0.88) 32%,
+            rgba(15, 23, 42, 0.58) 58%,
+            rgba(15, 23, 42, 0.18) 100%
+        ),
+        url("./spiderman.jpg");
+
+    background-size: cover;
+    background-position: 82% center;
+    background-repeat: no-repeat;
 }
 
+
+/* =========================
+   SIGNUP CARD
+========================= */
+
 .signup-card {
+    position: relative;
+    z-index: 2;
+
     width: min(470px, 100%);
+
     background: #ffffff;
+
     border: 1px solid #e2e8f0;
     border-top: 5px solid #dc2626;
+
     border-radius: 16px;
+
     padding: 38px;
 
     box-shadow:
-        0 20px 55px rgba(15, 23, 42, 0.13);
+        0 25px 70px rgba(0, 0, 0, 0.35);
 }
 
 .signup-logo {
     display: flex;
     justify-content: center;
+
     margin-bottom: 20px;
 }
 
 .signup-logo img {
     width: 82px;
     height: 82px;
+
     object-fit: contain;
 }
 
 .signup-card h1 {
     text-align: center;
+
     color: #0f172a;
+
     font-size: 30px;
     line-height: 1.2;
+
     margin-bottom: 10px;
 }
 
 .signup-subtitle {
     text-align: center;
+
     color: #64748b;
+
     font-size: 15px;
     line-height: 1.6;
+
     margin-bottom: 28px;
 }
 
@@ -153,8 +190,11 @@ img {
 
 .form-group label {
     display: block;
+
     margin-bottom: 8px;
+
     color: #0f172a;
+
     font-size: 14px;
     font-weight: 700;
 }
@@ -162,12 +202,14 @@ img {
 .form-group input {
     width: 100%;
     height: 48px;
+
     padding: 0 14px;
 
     border: 1px solid #cbd5e1;
     border-radius: 8px;
 
     outline: none;
+
     background: #ffffff;
     color: #0f172a;
 
@@ -191,8 +233,11 @@ img {
 
 .form-group small {
     display: block;
+
     margin-top: 7px;
+
     color: #64748b;
+
     font-size: 12px;
     line-height: 1.4;
 }
@@ -223,6 +268,7 @@ img {
 
 .signup-btn:hover {
     background: #b91c1c;
+
     transform: translateY(-1px);
 
     box-shadow:
@@ -231,7 +277,9 @@ img {
 
 .signup-btn:disabled {
     opacity: 0.65;
+
     transform: none;
+
     box-shadow: none;
 }
 
@@ -242,9 +290,11 @@ img {
 
 .admin-access-link {
     display: block;
+
     width: fit-content;
 
     margin: 18px auto 0;
+
     padding: 10px 22px;
 
     border: 2px solid #2563eb;
@@ -257,6 +307,7 @@ img {
 
     font-size: 14px;
     font-weight: 700;
+
     text-align: center;
 
     transition:
@@ -268,7 +319,9 @@ img {
 
 .admin-access-link:hover {
     background: #2563eb;
+
     color: #ffffff;
+
     transform: translateY(-1px);
 
     box-shadow:
@@ -282,6 +335,7 @@ img {
 
 .form-message {
     min-height: 22px;
+
     margin-top: 15px;
 
     text-align: center;
@@ -291,9 +345,9 @@ img {
 }
 
 
-/* =========================
+/* =========================================================
    USER HERO
-========================= */
+========================================================= */
 
 .hero-section {
     position: relative;
@@ -301,6 +355,7 @@ img {
     min-height: 100vh;
 
     display: none;
+
     align-items: center;
     justify-content: flex-start;
 
@@ -319,21 +374,27 @@ img {
         url("./spiderman.jpg");
 
     background-size: cover;
+
     background-position: 82% center;
+
     background-repeat: no-repeat;
 }
 
 .hero-overlay {
     position: absolute;
+
     inset: 0;
+
     pointer-events: none;
 }
 
 .hero-content {
     position: relative;
+
     z-index: 2;
 
     width: min(620px, 90%);
+
     margin-left: 8%;
 
     color: #ffffff;
@@ -346,6 +407,7 @@ img {
 
     font-size: 13px;
     font-weight: 800;
+
     letter-spacing: 2px;
 }
 
@@ -353,6 +415,7 @@ img {
     color: #ffffff;
 
     font-size: clamp(42px, 6vw, 76px);
+
     line-height: 1.05;
 
     margin-bottom: 22px;
@@ -398,6 +461,7 @@ img {
 
 .hero-btn:hover {
     background: #b91c1c;
+
     transform: translateY(-2px);
 
     box-shadow:
@@ -427,13 +491,14 @@ img {
 
 .admin-body {
     min-height: 100vh;
+
     background: #0f172a;
 }
 
 
-/* =========================
-   ADMIN LOGIN PAGE
-========================= */
+/* =========================================================
+   ADMIN LOGIN
+========================================================= */
 
 .admin-login-section {
     position: relative;
@@ -441,7 +506,9 @@ img {
     min-height: 100vh;
 
     display: flex;
+
     align-items: center;
+
     justify-content: flex-start;
 
     padding: 50px 7%;
@@ -463,20 +530,24 @@ img {
 
     width: 68%;
 
-    background-image: url("./spiderman.jpg");
+    background-image:
+        url("./spiderman.jpg");
 
     background-size: cover;
+
     background-position: 82% center;
+
     background-repeat: no-repeat;
 
     z-index: 0;
 }
 
 
-/* DARK BLUE LEFT OVERLAY */
+/* DARK BLUE OVERLAY */
 
 .admin-background-overlay {
     position: absolute;
+
     inset: 0;
 
     background:
@@ -499,6 +570,7 @@ img {
 
 .admin-login-card {
     position: relative;
+
     z-index: 3;
 
     width: min(450px, 100%);
@@ -517,6 +589,7 @@ img {
 
 .admin-logo {
     display: flex;
+
     justify-content: center;
 
     margin-bottom: 20px;
@@ -552,6 +625,7 @@ img {
     color: #0f172a;
 
     font-size: 31px;
+
     line-height: 1.2;
 
     margin-bottom: 9px;
@@ -561,6 +635,7 @@ img {
     color: #64748b;
 
     font-size: 14px;
+
     line-height: 1.6;
 }
 
@@ -573,6 +648,7 @@ img {
     color: #0f172a;
 
     font-size: 31px;
+
     line-height: 1.2;
 
     margin-bottom: 9px;
@@ -586,25 +662,30 @@ img {
     text-align: center;
 
     font-size: 14px;
+
     line-height: 1.6;
 }
 
 
-/* =========================
+/* =========================================================
    ADMIN LOGIN BUTTON
-========================= */
+========================================================= */
 
 .admin-login-btn {
     width: 100%;
+
     min-height: 50px;
 
     border: none;
+
     border-radius: 8px;
 
     background: #2563eb;
+
     color: #ffffff;
 
     font-size: 15px;
+
     font-weight: 700;
 
     transition:
@@ -615,6 +696,7 @@ img {
 
 .admin-login-btn:hover {
     background: #1d4ed8;
+
     transform: translateY(-1px);
 
     box-shadow:
@@ -627,6 +709,7 @@ img {
     cursor: not-allowed;
 
     transform: none;
+
     box-shadow: none;
 }
 
@@ -647,11 +730,13 @@ img {
     text-decoration: none;
 
     font-size: 14px;
+
     font-weight: 700;
 }
 
 .back-home-link:hover {
     color: #dc2626;
+
     text-decoration: underline;
 }
 
@@ -682,20 +767,24 @@ img {
 
     width: 72%;
 
-    background-image: url("./spiderman.jpg");
+    background-image:
+        url("./spiderman.jpg");
 
     background-size: cover;
+
     background-position: 82% center;
+
     background-repeat: no-repeat;
 
     z-index: 0;
 }
 
 
-/* DASHBOARD DARK OVERLAY */
+/* DASHBOARD OVERLAY */
 
 .admin-dashboard-overlay {
     position: absolute;
+
     inset: 0;
 
     background:
@@ -715,7 +804,162 @@ img {
 
 
 /* =========================================================
-   WELCOME SECTION WITH SPIDER-MAN BACKGROUND
+   DASHBOARD HEADER
+========================================================= */
+
+.admin-dashboard-header {
+    position: relative;
+
+    z-index: 5;
+
+    min-height: 92px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding: 16px 5%;
+
+    background: #ffffff;
+
+    border-bottom: 4px solid #dc2626;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.16);
+}
+
+.admin-header-left {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.admin-header-logo {
+    width: 58px;
+    height: 58px;
+
+    object-fit: contain;
+}
+
+.admin-header-title > span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #dc2626;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.admin-header-title h1 {
+    color: #0f172a;
+
+    font-size: 24px;
+
+    line-height: 1.2;
+}
+
+.admin-header-title p {
+    margin-top: 4px;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+/* OLD HEADER COMPATIBILITY */
+
+.admin-header-left > div h1 {
+    color: #0f172a;
+
+    font-size: 24px;
+
+    line-height: 1.2;
+}
+
+.admin-header-left > div p {
+    margin-top: 4px;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.admin-logout-btn {
+    min-width: 100px;
+
+    padding: 11px 20px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #dc2626;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.admin-logout-btn:hover {
+    background: #b91c1c;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 7px 18px rgba(220, 38, 38, 0.20);
+}
+
+.admin-logout-btn:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   DASHBOARD CONTENT
+========================================================= */
+
+.admin-dashboard-content {
+    position: relative;
+
+    z-index: 3;
+
+    width: min(1180px, 90%);
+
+    margin: 0 auto;
+
+    padding: 45px 0 60px;
+}
+
+
+/* =========================================================
+   WELCOME SECTION
+   SPIDER-MAN BACKGROUND
 ========================================================= */
 
 .dashboard-intro {
@@ -724,7 +968,9 @@ img {
     min-height: 190px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: flex-start;
 
     overflow: hidden;
@@ -746,7 +992,7 @@ img {
 }
 
 
-/* WELCOME SECTION IMAGE */
+/* WELCOME IMAGE */
 
 .dashboard-intro::after {
     content: "";
@@ -759,14 +1005,11 @@ img {
 
     width: 55%;
 
-    background-image: url("./spiderman.jpg");
+    background-image:
+        url("./spiderman.jpg");
 
     background-size: cover;
 
-    /*
-       Spider-Man ko right side par rakhta hai
-       taake face clear nazar aaye.
-    */
     background-position: 82% center;
 
     background-repeat: no-repeat;
@@ -775,7 +1018,7 @@ img {
 }
 
 
-/* WELCOME SECTION DARK + RED/BLUE BLEND */
+/* WELCOME DARK BLEND */
 
 .dashboard-intro::before {
     content: "";
@@ -817,6 +1060,7 @@ img {
     color: #60a5fa;
 
     font-size: 11px;
+
     font-weight: 800;
 
     letter-spacing: 2px;
@@ -826,6 +1070,7 @@ img {
     color: #ffffff;
 
     font-size: 30px;
+
     line-height: 1.2;
 
     margin-bottom: 9px;
@@ -835,150 +1080,8 @@ img {
     color: #e2e8f0;
 
     font-size: 14px;
+
     line-height: 1.6;
-}
-
-
-/* =========================================================
-   DASHBOARD HEADER
-========================================================= */
-
-.admin-dashboard-header {
-    position: relative;
-    z-index: 5;
-
-    min-height: 92px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 25px;
-
-    padding: 16px 5%;
-
-    background: #ffffff;
-
-    border-bottom: 4px solid #dc2626;
-
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.16);
-}
-
-.admin-header-left {
-    display: flex;
-    align-items: center;
-
-    gap: 15px;
-}
-
-.admin-header-logo {
-    width: 58px;
-    height: 58px;
-
-    object-fit: contain;
-}
-
-.admin-header-title > span {
-    display: block;
-
-    margin-bottom: 3px;
-
-    color: #dc2626;
-
-    font-size: 11px;
-    font-weight: 800;
-
-    letter-spacing: 2px;
-}
-
-.admin-header-title h1 {
-    color: #0f172a;
-
-    font-size: 24px;
-    line-height: 1.2;
-}
-
-.admin-header-title p {
-    margin-top: 4px;
-
-    color: #64748b;
-
-    font-size: 12px;
-}
-
-
-/* OLD HEADER COMPATIBILITY */
-
-.admin-header-left > div h1 {
-    color: #0f172a;
-
-    font-size: 24px;
-    line-height: 1.2;
-}
-
-.admin-header-left > div p {
-    margin-top: 4px;
-
-    color: #64748b;
-
-    font-size: 12px;
-}
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-.admin-logout-btn {
-    min-width: 100px;
-
-    padding: 11px 20px;
-
-    border: none;
-    border-radius: 7px;
-
-    background: #dc2626;
-    color: #ffffff;
-
-    font-size: 14px;
-    font-weight: 700;
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.admin-logout-btn:hover {
-    background: #b91c1c;
-
-    transform: translateY(-1px);
-
-    box-shadow:
-        0 7px 18px rgba(220, 38, 38, 0.20);
-}
-
-.admin-logout-btn:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
-}
-
-
-/* =========================================================
-   DASHBOARD CONTENT
-========================================================= */
-
-.admin-dashboard-content {
-    position: relative;
-
-    z-index: 3;
-
-    width: min(1180px, 90%);
-
-    margin: 0 auto;
-
-    padding: 45px 0 60px;
 }
 
 
@@ -1001,6 +1104,7 @@ img {
     min-height: 145px;
 
     display: flex;
+
     align-items: center;
 
     gap: 20px;
@@ -1033,12 +1137,15 @@ img {
 
 .stat-icon {
     width: 70px;
+
     min-width: 70px;
 
     height: 70px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     border-radius: 10px;
@@ -1048,6 +1155,7 @@ img {
     color: #0f172a;
 
     font-size: 10px;
+
     font-weight: 800;
 
     letter-spacing: 1px;
@@ -1061,6 +1169,7 @@ img {
     color: #64748b;
 
     font-size: 13px;
+
     font-weight: 700;
 }
 
@@ -1070,6 +1179,7 @@ img {
     color: #dc2626;
 
     font-size: 42px;
+
     line-height: 1;
 }
 
@@ -1083,6 +1193,7 @@ img {
     color: #2563eb;
 
     font-size: 17px;
+
     line-height: 1.4;
 }
 
@@ -1104,7 +1215,9 @@ img {
 
 .admin-table-header {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 20px;
@@ -1122,6 +1235,7 @@ img {
     color: #dc2626;
 
     font-size: 11px;
+
     font-weight: 800;
 
     letter-spacing: 2px;
@@ -1152,12 +1266,15 @@ img {
     padding: 11px 19px;
 
     border: none;
+
     border-radius: 7px;
 
     background: #2563eb;
+
     color: #ffffff;
 
     font-size: 13px;
+
     font-weight: 700;
 
     transition:
@@ -1177,6 +1294,7 @@ img {
 
 .refresh-btn:disabled {
     opacity: 0.65;
+
     cursor: not-allowed;
 }
 
@@ -1211,6 +1329,7 @@ th {
     text-align: left;
 
     font-size: 12px;
+
     font-weight: 700;
 
     white-space: nowrap;
@@ -1348,6 +1467,8 @@ tbody tr:hover td {
         min-height: calc(100vh - 70px);
 
         padding: 35px 15px;
+
+        background-position: 78% center;
     }
 
     .signup-card {
@@ -1564,6 +1685,7 @@ tbody tr:hover td {
 
     .dashboard-message {
         padding-left: 18px;
+
         padding-right: 18px;
     }
 }
@@ -1617,3 +1739,4 @@ tbody tr:hover td {
         font-size: 21px;
     }
 }
+```
