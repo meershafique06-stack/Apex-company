@@ -1,15 +1,16 @@
 ```css
 /* =========================================================
    APEX COMPANY
-   FINAL PROFESSIONAL WEBSITE CSS
+   FINAL PROFESSIONAL CSS
    RED + WHITE + BLUE
+   SPIDER-MAN THEME
    USER SIGNUP + HERO
    ADMIN LOGIN + DASHBOARD
 ========================================================= */
 
 
 /* =========================================================
-   GLOBAL
+   GLOBAL RESET
 ========================================================= */
 
 * {
@@ -37,6 +38,10 @@ button {
     cursor: pointer;
 }
 
+button:disabled {
+    cursor: not-allowed;
+}
+
 img {
     max-width: 100%;
     display: block;
@@ -57,7 +62,7 @@ img {
     background: #ffffff;
     border-bottom: 1px solid #e5e7eb;
     position: relative;
-    z-index: 10;
+    z-index: 20;
 }
 
 .header-content {
@@ -102,11 +107,16 @@ img {
 .signup-card {
     width: min(470px, 100%);
     background: #ffffff;
-    border: 1px solid #e5e7eb;
+
+    border: 1px solid #e2e8f0;
     border-top: 5px solid #dc2626;
     border-radius: 16px;
+
     padding: 38px;
-    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+
+    box-shadow:
+        0 20px 55px
+        rgba(15, 23, 42, 0.13);
 }
 
 .signup-logo {
@@ -124,16 +134,20 @@ img {
 .signup-card h1 {
     text-align: center;
     color: #0f172a;
+
     font-size: 30px;
     line-height: 1.2;
+
     margin-bottom: 10px;
 }
 
 .signup-subtitle {
     text-align: center;
     color: #64748b;
+
     font-size: 15px;
     line-height: 1.6;
+
     margin-bottom: 28px;
 }
 
@@ -148,8 +162,11 @@ img {
 
 .form-group label {
     display: block;
+
     margin-bottom: 8px;
+
     color: #0f172a;
+
     font-size: 14px;
     font-weight: 700;
 }
@@ -157,6 +174,7 @@ img {
 .form-group input {
     width: 100%;
     height: 48px;
+
     padding: 0 14px;
 
     border: 1px solid #cbd5e1;
@@ -174,6 +192,10 @@ img {
         box-shadow 0.2s ease;
 }
 
+.form-group input::placeholder {
+    color: #94a3b8;
+}
+
 .form-group input:focus {
     border-color: #2563eb;
 
@@ -184,6 +206,7 @@ img {
 
 .form-group small {
     display: block;
+
     margin-top: 7px;
 
     color: #64748b;
@@ -223,13 +246,11 @@ img {
 
     box-shadow:
         0 8px 20px
-        rgba(220, 38, 38, 0.22);
+        rgba(220, 38, 38, 0.24);
 }
 
 .signup-btn:disabled {
     opacity: 0.65;
-    cursor: not-allowed;
-
     transform: none;
     box-shadow: none;
 }
@@ -241,6 +262,7 @@ img {
 
 .admin-access-link {
     display: block;
+
     width: fit-content;
 
     margin: 18px auto 0;
@@ -310,13 +332,15 @@ img {
 
     overflow: hidden;
 
+    background-color: #0f172a;
+
     background-image:
         linear-gradient(
             90deg,
-            rgba(15, 23, 42, 0.90) 0%,
-            rgba(15, 23, 42, 0.76) 38%,
-            rgba(15, 23, 42, 0.40) 62%,
-            rgba(15, 23, 42, 0.08) 100%
+            rgba(15, 23, 42, 0.94) 0%,
+            rgba(15, 23, 42, 0.82) 34%,
+            rgba(15, 23, 42, 0.48) 60%,
+            rgba(15, 23, 42, 0.10) 100%
         ),
         url("./spiderman.jpg");
 
@@ -357,13 +381,13 @@ img {
 }
 
 .hero-content h2 {
+    color: #ffffff;
+
     font-size: clamp(42px, 6vw, 76px);
 
     line-height: 1.05;
 
     margin-bottom: 22px;
-
-    color: #ffffff;
 }
 
 .hero-content > p:not(.hero-small-text):not(.welcome-user) {
@@ -400,13 +424,18 @@ img {
 
     transition:
         background 0.2s ease,
-        transform 0.2s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .hero-btn:hover {
     background: #b91c1c;
 
     transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(220, 38, 38, 0.25);
 }
 
 
@@ -449,6 +478,7 @@ img {
     display: flex;
 
     align-items: center;
+
     justify-content: flex-start;
 
     padding: 50px 7%;
@@ -461,6 +491,7 @@ img {
 
 /* =========================================================
    ADMIN LOGIN SPIDER-MAN IMAGE
+   IMAGE STAYS ON RIGHT SIDE
 ========================================================= */
 
 .admin-background-image {
@@ -470,16 +501,11 @@ img {
     right: 0;
     bottom: 0;
 
-    width: 65%;
+    width: 68%;
 
     background-image: url("./spiderman.jpg");
 
     background-size: cover;
-
-    /*
-       Move image toward RIGHT.
-       The Spider-Man face stays visible.
-    */
 
     background-position: 82% center;
 
@@ -502,10 +528,10 @@ img {
         linear-gradient(
             90deg,
             #0f172a 0%,
-            rgba(15, 23, 42, 0.98) 20%,
-            rgba(15, 23, 42, 0.82) 38%,
-            rgba(15, 23, 42, 0.40) 58%,
-            rgba(15, 23, 42, 0.08) 100%
+            rgba(15, 23, 42, 0.98) 18%,
+            rgba(15, 23, 42, 0.88) 34%,
+            rgba(15, 23, 42, 0.52) 55%,
+            rgba(15, 23, 42, 0.10) 100%
         );
 
     z-index: 1;
@@ -592,7 +618,7 @@ img {
 
 
 /* =========================================================
-   OLD ADMIN HTML COMPATIBILITY
+   OLD ADMIN LOGIN HTML COMPATIBILITY
 ========================================================= */
 
 .admin-login-card > h1 {
@@ -638,6 +664,7 @@ img {
     color: #ffffff;
 
     font-size: 15px;
+
     font-weight: 700;
 
     transition:
@@ -711,6 +738,7 @@ img {
 
 /* =========================================================
    DASHBOARD SPIDER-MAN IMAGE
+   IMAGE STAYS ON RIGHT SIDE
 ========================================================= */
 
 .admin-dashboard-background {
@@ -720,15 +748,11 @@ img {
     right: 0;
     bottom: 0;
 
-    width: 68%;
+    width: 72%;
 
     background-image: url("./spiderman.jpg");
 
     background-size: cover;
-
-    /*
-       Spider-Man positioned on RIGHT.
-    */
 
     background-position: 82% center;
 
@@ -751,9 +775,9 @@ img {
         linear-gradient(
             90deg,
             #0f172a 0%,
-            rgba(15, 23, 42, 0.98) 20%,
-            rgba(15, 23, 42, 0.86) 40%,
-            rgba(15, 23, 42, 0.48) 60%,
+            rgba(15, 23, 42, 0.98) 18%,
+            rgba(15, 23, 42, 0.88) 36%,
+            rgba(15, 23, 42, 0.52) 58%,
             rgba(15, 23, 42, 0.12) 100%
         );
 
@@ -839,7 +863,9 @@ img {
 }
 
 
-/* Compatibility for old dashboard HTML */
+/* =========================================================
+   OLD DASHBOARD HEADER COMPATIBILITY
+========================================================= */
 
 .admin-header-left > div h1 {
     color: #0f172a;
@@ -881,13 +907,18 @@ img {
 
     transition:
         background 0.2s ease,
-        transform 0.2s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .admin-logout-btn:hover {
     background: #b91c1c;
 
     transform: translateY(-1px);
+
+    box-shadow:
+        0 7px 18px
+        rgba(220, 38, 38, 0.20);
 }
 
 .admin-logout-btn:disabled {
@@ -974,7 +1005,7 @@ img {
 
 
 /* =========================================================
-   STAT CARDS
+   STATISTICS
 ========================================================= */
 
 .admin-stats {
@@ -1088,7 +1119,7 @@ img {
 
 
 /* =========================================================
-   TABLE CARD
+   SIGNUP TABLE CARD
 ========================================================= */
 
 .admin-table-card {
@@ -1169,13 +1200,18 @@ img {
 
     transition:
         background 0.2s ease,
-        transform 0.2s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .refresh-btn:hover {
     background: #1d4ed8;
 
     transform: translateY(-1px);
+
+    box-shadow:
+        0 7px 18px
+        rgba(37, 99, 235, 0.20);
 }
 
 .refresh-btn:disabled {
@@ -1226,12 +1262,14 @@ td {
 
     color: #334155;
 
+    background: #ffffff;
+
     border-bottom: 1px solid #e5e7eb;
 
     font-size: 13px;
 }
 
-tbody tr:hover {
+tbody tr:hover td {
     background: #f8fafc;
 }
 
@@ -1284,13 +1322,13 @@ tbody tr:hover {
     }
 
     .admin-background-image {
-        width: 72%;
+        width: 75%;
 
         background-position: 80% center;
     }
 
     .admin-dashboard-background {
-        width: 72%;
+        width: 75%;
 
         background-position: 80% center;
     }
@@ -1335,7 +1373,9 @@ tbody tr:hover {
     }
 
 
-    /* Signup */
+    /* ---------------------------------------------
+       SIGNUP
+    --------------------------------------------- */
 
     .signup-section {
         min-height: calc(100vh - 70px);
@@ -1354,7 +1394,9 @@ tbody tr:hover {
     }
 
 
-    /* User Hero */
+    /* ---------------------------------------------
+       USER HERO
+    --------------------------------------------- */
 
     .hero-section {
         min-height: 100vh;
@@ -1383,7 +1425,9 @@ tbody tr:hover {
     }
 
 
-    /* Admin Login */
+    /* ---------------------------------------------
+       ADMIN LOGIN
+    --------------------------------------------- */
 
     .admin-login-section {
         min-height: 100vh;
@@ -1403,8 +1447,8 @@ tbody tr:hover {
         background:
             linear-gradient(
                 90deg,
-                rgba(15, 23, 42, 0.92),
-                rgba(15, 23, 42, 0.48)
+                rgba(15, 23, 42, 0.93),
+                rgba(15, 23, 42, 0.52)
             );
     }
 
@@ -1422,7 +1466,9 @@ tbody tr:hover {
     }
 
 
-    /* Admin Dashboard */
+    /* ---------------------------------------------
+       ADMIN DASHBOARD
+    --------------------------------------------- */
 
     .admin-dashboard-section {
         min-height: 100vh;
@@ -1438,8 +1484,8 @@ tbody tr:hover {
         background:
             linear-gradient(
                 90deg,
-                rgba(15, 23, 42, 0.92),
-                rgba(15, 23, 42, 0.48)
+                rgba(15, 23, 42, 0.93),
+                rgba(15, 23, 42, 0.52)
             );
     }
 
