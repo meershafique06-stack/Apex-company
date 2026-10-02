@@ -1,42 +1,94 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
-        content="Apex Company Admin Dashboard"
+        content="Apex Company secure admin portal and dashboard"
     >
 
     <title>Apex Company | Admin Portal</title>
 
-    <link rel="stylesheet" href="./style.css">
+    <link
+        rel="stylesheet"
+        href="./style.css"
+    >
+
 </head>
+
 
 <body class="admin-body">
 
-    <!-- ==============================
+
+    <!-- =====================================================
          ADMIN LOGIN
-    =============================== -->
-    <section id="adminLoginSection" class="admin-login-section">
+    ====================================================== -->
+
+    <section
+        id="adminLoginSection"
+        class="admin-login-section"
+    >
+
+        <!-- Spider-Man Background -->
+
+        <div
+            class="admin-background-image"
+            aria-hidden="true"
+        ></div>
+
+
+        <!-- Dark Background Overlay -->
+
+        <div
+            class="admin-background-overlay"
+            aria-hidden="true"
+        ></div>
+
+
+        <!-- Login Content -->
 
         <div class="admin-login-card">
 
             <div class="admin-logo">
+
                 <img
                     src="./logo.jpeg"
                     alt="Apex Company Logo"
                 >
+
             </div>
 
-            <h1>Admin Portal</h1>
 
-            <p class="admin-subtitle">
-                Sign in to access the Apex Company dashboard.
-            </p>
+            <div class="admin-login-heading">
+
+                <span class="admin-badge">
+                    APEX COMPANY
+                </span>
+
+                <h1>
+                    Admin Portal
+                </h1>
+
+                <p>
+                    Sign in to access the Apex Company dashboard.
+                </p>
+
+            </div>
+
+
+            <!-- Login Form -->
 
             <form id="adminLoginForm">
+
 
                 <div class="form-group">
 
@@ -48,11 +100,12 @@
                         type="email"
                         id="adminEmail"
                         placeholder="Enter admin email"
-                        autocomplete="email"
+                        autocomplete="username"
                         required
                     >
 
                 </div>
+
 
                 <div class="form-group">
 
@@ -70,6 +123,7 @@
 
                 </div>
 
+
                 <button
                     type="submit"
                     id="adminLoginBtn"
@@ -78,13 +132,16 @@
                     Login to Dashboard
                 </button>
 
+
             </form>
+
 
             <p
                 id="adminLoginMessage"
                 class="form-message"
                 aria-live="polite"
             ></p>
+
 
             <a
                 href="./index.html"
@@ -93,21 +150,43 @@
                 ← Back to Website
             </a>
 
+
         </div>
 
     </section>
 
 
-    <!-- ==============================
+
+    <!-- =====================================================
          ADMIN DASHBOARD
-    =============================== -->
+    ====================================================== -->
+
     <section
         id="adminDashboardSection"
         class="admin-dashboard-section"
         style="display: none;"
     >
 
+        <!-- Spider-Man Background -->
+
+        <div
+            class="admin-dashboard-background"
+            aria-hidden="true"
+        ></div>
+
+
+        <!-- Background Overlay -->
+
+        <div
+            class="admin-dashboard-overlay"
+            aria-hidden="true"
+        ></div>
+
+
+        <!-- Dashboard Header -->
+
         <header class="admin-dashboard-header">
+
 
             <div class="admin-header-left">
 
@@ -117,12 +196,25 @@
                     class="admin-header-logo"
                 >
 
-                <div>
-                    <h1>Admin Dashboard</h1>
-                    <p>Apex Company Management Portal</p>
+
+                <div class="admin-header-title">
+
+                    <span>
+                        APEX COMPANY
+                    </span>
+
+                    <h1>
+                        Admin Dashboard
+                    </h1>
+
+                    <p>
+                        Management Portal
+                    </p>
+
                 </div>
 
             </div>
+
 
             <button
                 type="button"
@@ -132,71 +224,138 @@
                 Logout
             </button>
 
+
         </header>
 
 
+
+        <!-- Dashboard Content -->
+
         <main class="admin-dashboard-content">
 
+
+            <!-- Dashboard Welcome -->
+
+            <section class="dashboard-intro">
+
+                <div>
+
+                    <span class="dashboard-label">
+                        ADMINISTRATION
+                    </span>
+
+                    <h2>
+                        Welcome to Apex Company
+                    </h2>
+
+                    <p>
+                        Monitor signup activity and connected users.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
             <!-- Statistics -->
-            <div class="admin-stats">
 
-                <div class="admin-stat-card">
-
-                    <span class="admin-stat-label">
-                        Total Signups
-                    </span>
-
-                    <strong
-                        id="totalSignups"
-                        class="admin-stat-number"
-                    >
-                        0
-                    </strong>
-
-                </div>
+            <section class="admin-stats">
 
 
-                <div class="admin-stat-card">
+                <article class="admin-stat-card stat-red">
 
-                    <span class="admin-stat-label">
-                        Latest Signup
-                    </span>
-
-                    <strong
-                        id="latestSignup"
-                        class="admin-stat-text"
-                    >
-                        No records
-                    </strong>
-
-                </div>
-
-            </div>
+                    <div class="stat-icon">
+                        USERS
+                    </div>
 
 
-            <!-- Signup Table -->
-            <div class="admin-table-card">
+                    <div>
+
+                        <span class="admin-stat-label">
+                            Total Signups
+                        </span>
+
+                        <strong
+                            id="totalSignups"
+                            class="admin-stat-number"
+                        >
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="admin-stat-card stat-blue">
+
+                    <div class="stat-icon">
+                        LATEST
+                    </div>
+
+
+                    <div>
+
+                        <span class="admin-stat-label">
+                            Latest Signup
+                        </span>
+
+                        <strong
+                            id="latestSignup"
+                            class="admin-stat-text"
+                        >
+                            No records
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- Signup Records -->
+
+            <section class="admin-table-card">
+
 
                 <div class="admin-table-header">
 
                     <div>
-                        <h2>Signup Records</h2>
+
+                        <span class="table-label">
+                            USER MANAGEMENT
+                        </span>
+
+                        <h2>
+                            Signup Records
+                        </h2>
 
                         <p>
-                            View users who connected with Apex Company.
+                            Users who have connected with Apex Company.
                         </p>
+
                     </div>
+
 
                     <button
                         type="button"
                         id="refreshBtn"
                         class="refresh-btn"
                     >
-                        Refresh
+                        Refresh Records
                     </button>
+
 
                 </div>
 
+
+
+                <!-- Table -->
 
                 <div class="table-wrapper">
 
@@ -205,24 +364,41 @@
                         <thead>
 
                             <tr>
+
                                 <th>#</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Date</th>
-                                <th>Time</th>
+
+                                <th>
+                                    Name
+                                </th>
+
+                                <th>
+                                    Email
+                                </th>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Time
+                                </th>
+
                             </tr>
 
                         </thead>
 
+
                         <tbody id="signupTableBody">
 
                             <tr>
+
                                 <td
                                     colspan="5"
                                     class="loading-cell"
                                 >
                                     Loading signup records...
                                 </td>
+
                             </tr>
 
                         </tbody>
@@ -231,22 +407,31 @@
 
                 </div>
 
+
                 <p
                     id="dashboardMessage"
                     class="dashboard-message"
                 ></p>
 
-            </div>
+
+            </section>
+
 
         </main>
 
     </section>
 
 
+
+    <!-- JAVASCRIPT -->
+
     <script
         type="module"
         src="./admin.js"
     ></script>
 
+
 </body>
+
 </html>
+```
