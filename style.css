@@ -1,6 +1,7 @@
+```css
 /* =========================================================
-   APEX COMPANY - MAIN STYLESHEET
-   Red + White + Blue Professional Theme
+   APEX COMPANY
+   MAIN + ADMIN PANEL STYLES
    ========================================================= */
 
 * {
@@ -20,21 +21,27 @@ body {
     line-height: 1.6;
 }
 
+img {
+    max-width: 100%;
+}
+
 /* =========================================================
-   HEADER
+   MAIN HEADER
    ========================================================= */
 
 .site-header {
     width: 100%;
     min-height: 82px;
+    padding: 14px 6%;
     background: #ffffff;
     border-bottom: 1px solid #e5e7eb;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 6%;
+
     position: relative;
-    z-index: 10;
+    z-index: 20;
 }
 
 .logo-wrapper {
@@ -54,7 +61,6 @@ body {
     font-size: 22px;
     font-weight: 800;
     color: #dc2626;
-    letter-spacing: 0.5px;
 }
 
 .logo-text span {
@@ -65,27 +71,38 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     padding: 11px 22px;
-    border-radius: 7px;
+
     background: #1d4ed8;
     color: #ffffff;
+
     text-decoration: none;
+    border-radius: 7px;
+
     font-size: 14px;
     font-weight: 700;
+
     transition: 0.3s ease;
 }
 
 .admin-access-link:hover {
     background: #1e40af;
-    transform: translateY(-1px);
 }
 
 /* =========================================================
-   SIGNUP SECTION
+   MAIN SIGNUP PAGE
    ========================================================= */
 
 .signup-section {
     min-height: calc(100vh - 82px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 55px 20px;
+
     background:
         linear-gradient(
             135deg,
@@ -93,20 +110,24 @@ body {
             #f8fafc 55%,
             #eff6ff 100%
         );
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 55px 20px;
 }
 
 .signup-card {
     width: 100%;
     max-width: 450px;
-    background: #ffffff;
+
     padding: 40px;
+
+    background: #ffffff;
+
     border-radius: 14px;
     border-top: 6px solid #dc2626;
-    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.14);
+
+    box-shadow:
+        0 18px 45px rgba(15, 23, 42, 0.14);
+
+    position: relative;
+    z-index: 3;
 }
 
 .signup-logo {
@@ -149,7 +170,9 @@ body {
 .form-group label {
     display: block;
     margin-bottom: 7px;
+
     color: #0f172a;
+
     font-size: 14px;
     font-weight: 700;
 }
@@ -157,63 +180,81 @@ body {
 .form-group input {
     width: 100%;
     height: 50px;
+
     padding: 0 15px;
+
     border: 1px solid #cbd5e1;
     border-radius: 7px;
+
     outline: none;
+
     font-size: 15px;
     color: #0f172a;
+
     background: #ffffff;
+
     transition: 0.25s ease;
 }
 
 .form-group input:focus {
     border-color: #1d4ed8;
-    box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.10);
+
+    box-shadow:
+        0 0 0 3px rgba(29, 78, 216, 0.10);
 }
 
 .signup-btn {
     width: 100%;
     height: 52px;
+
     border: none;
     border-radius: 7px;
+
     background: #dc2626;
     color: #ffffff;
+
     font-size: 15px;
     font-weight: 800;
+
     cursor: pointer;
+
     transition: 0.3s ease;
 }
 
 .signup-btn:hover {
     background: #b91c1c;
-    transform: translateY(-1px);
 }
 
 .signup-btn:disabled {
     opacity: 0.65;
     cursor: not-allowed;
-    transform: none;
 }
 
 .form-message {
     min-height: 24px;
+
     margin-top: 14px;
+
     text-align: center;
+
     font-size: 14px;
     font-weight: 600;
 }
 
 /* =========================================================
-   HERO SECTION
+   HERO AFTER SIGNUP
    ========================================================= */
 
 .hero-section {
     min-height: calc(100vh - 82px);
+
     display: none;
+
     align-items: center;
     justify-content: center;
+
     padding: 70px 20px;
+
     background:
         linear-gradient(
             135deg,
@@ -221,19 +262,27 @@ body {
             #1e3a8a 55%,
             #dc2626 100%
         );
+
     color: #ffffff;
 }
 
 .hero-content {
     width: 100%;
     max-width: 900px;
+
     text-align: center;
+
+    position: relative;
+    z-index: 2;
 }
 
 .hero-content h1 {
     font-size: clamp(42px, 7vw, 76px);
+
     line-height: 1.05;
+
     margin-bottom: 20px;
+
     font-weight: 900;
 }
 
@@ -243,28 +292,36 @@ body {
 
 .hero-content p {
     max-width: 650px;
+
     margin: 0 auto 25px;
+
     font-size: 18px;
+
     color: #dbeafe;
 }
 
 .welcome-user {
     margin-bottom: 25px;
+
     font-size: 17px;
     font-weight: 700;
 }
 
 .logout-btn {
     min-width: 150px;
+
     padding: 13px 25px;
+
     border: 2px solid #ffffff;
     border-radius: 7px;
+
     background: #ffffff;
     color: #dc2626;
+
     font-size: 15px;
     font-weight: 800;
+
     cursor: pointer;
-    transition: 0.3s ease;
 }
 
 .logout-btn:hover {
@@ -278,9 +335,13 @@ body {
 
 .site-footer {
     background: #0f172a;
+
     color: #cbd5e1;
+
     text-align: center;
+
     padding: 22px 20px;
+
     font-size: 14px;
 }
 
@@ -289,7 +350,7 @@ body {
 }
 
 /* =========================================================
-   ADMIN LOGIN PAGE
+   ADMIN BODY
    ========================================================= */
 
 .admin-body {
@@ -297,510 +358,33 @@ body {
     background: #0f172a;
 }
 
+/* =========================================================
+   ADMIN LOGIN
+   ========================================================= */
+
 .admin-login-section {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
-    background:
-        linear-gradient(
-            135deg,
-            #0f172a 0%,
-            #1e3a8a 60%,
-            #dc2626 100%
-        );
-}
-
-.admin-login-card {
-    width: 100%;
-    max-width: 450px;
-    padding: 40px;
-    background: #ffffff;
-    border-radius: 14px;
-    border-top: 6px solid #dc2626;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.30);
-}
-
-.admin-logo {
-    text-align: center;
-    margin-bottom: 18px;
-}
-
-.admin-logo img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    border-radius: 10px;
-}
-
-.admin-login-heading {
-    text-align: center;
-    margin-bottom: 28px;
-}
-
-.admin-badge {
-    display: inline-block;
-    margin-bottom: 8px;
-    color: #dc2626;
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: 1px;
-}
-
-.admin-login-heading h1 {
-    color: #0f172a;
-    font-size: 30px;
-    margin-bottom: 7px;
-}
-
-.admin-login-heading p {
-    color: #64748b;
-    font-size: 14px;
-}
-
-.admin-login-btn {
-    width: 100%;
-    height: 52px;
-    border: none;
-    border-radius: 7px;
-    background: #1d4ed8;
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.admin-login-btn:hover {
-    background: #1e40af;
-}
-
-.admin-login-btn:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
-}
-
-.back-home-link {
-    display: block;
-    margin-top: 20px;
-    text-align: center;
-    color: #1d4ed8;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.back-home-link:hover {
-    text-decoration: underline;
-}
-
-/* =========================================================
-   ADMIN DASHBOARD
-   ========================================================= */
-
-.admin-dashboard-section {
-    min-height: 100vh;
-    background: #f1f5f9;
-    color: #0f172a;
-}
-
-.admin-dashboard-header {
-    min-height: 82px;
-    padding: 14px 5%;
-    background: #ffffff;
-    border-bottom: 1px solid #e2e8f0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
     position: relative;
-    z-index: 5;
-}
 
-.admin-header-left {
+    min-height: 100vh;
+
     display: flex;
     align-items: center;
-    gap: 14px;
-}
+    justify-content: flex-start;
 
-.admin-header-logo {
-    width: 55px;
-    height: 55px;
-    object-fit: contain;
-    border-radius: 8px;
-}
+    padding: 50px 7%;
 
-.admin-header-title span {
-    color: #dc2626;
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 1px;
-}
-
-.admin-header-title h1 {
-    font-size: 23px;
-    line-height: 1.2;
-    color: #0f172a;
-}
-
-.admin-header-title p {
-    color: #64748b;
-    font-size: 12px;
-}
-
-.admin-logout-btn {
-    padding: 11px 22px;
-    border: none;
-    border-radius: 7px;
-    background: #dc2626;
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 800;
-    cursor: pointer;
-}
-
-.admin-logout-btn:hover {
-    background: #b91c1c;
-}
-
-.admin-dashboard-content {
-    width: 100%;
-    max-width: 1250px;
-    margin: 0 auto;
-    padding: 45px 25px;
-}
-
-.dashboard-intro {
-    margin-bottom: 30px;
-}
-
-.dashboard-label,
-.table-label {
-    color: #1d4ed8;
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 1px;
-}
-
-.dashboard-intro h2 {
-    margin-top: 5px;
-    font-size: 32px;
-    color: #0f172a;
-}
-
-.dashboard-intro p {
-    color: #64748b;
-    margin-top: 5px;
-}
-
-/* =========================================================
-   ADMIN STAT CARDS
-   ========================================================= */
-
-.admin-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
-    margin-bottom: 30px;
-}
-
-.admin-stat-card {
-    min-height: 140px;
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 25px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
-    border-left: 5px solid #dc2626;
-}
-
-.stat-blue {
-    border-left-color: #1d4ed8;
-}
-
-.stat-icon {
-    min-width: 85px;
-    height: 65px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fee2e2;
-    color: #dc2626;
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 0.5px;
-}
-
-.stat-blue .stat-icon {
-    background: #dbeafe;
-    color: #1d4ed8;
-}
-
-.admin-stat-label {
-    display: block;
-    color: #64748b;
-    font-size: 13px;
-    margin-bottom: 5px;
-}
-
-.admin-stat-number {
-    display: block;
-    font-size: 38px;
-    line-height: 1;
-    color: #0f172a;
-}
-
-.admin-stat-text {
-    display: block;
-    max-width: 320px;
-    overflow-wrap: anywhere;
-    font-size: 18px;
-    color: #0f172a;
-}
-
-/* =========================================================
-   TABLE
-   ========================================================= */
-
-.admin-table-card {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
     overflow: hidden;
-}
 
-.admin-table-header {
-    padding: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    border-bottom: 1px solid #e2e8f0;
-}
-
-.admin-table-header h2 {
-    font-size: 24px;
-    margin-top: 4px;
-}
-
-.admin-table-header p {
-    color: #64748b;
-    font-size: 14px;
-}
-
-.refresh-btn {
-    padding: 11px 20px;
-    border: none;
-    border-radius: 7px;
-    background: #1d4ed8;
-    color: #ffffff;
-    font-size: 13px;
-    font-weight: 800;
-    cursor: pointer;
-    white-space: nowrap;
-}
-
-.refresh-btn:hover {
-    background: #1e40af;
-}
-
-.refresh-btn:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
-}
-
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    min-width: 700px;
-    border-collapse: collapse;
-}
-
-thead {
     background: #0f172a;
-    color: #ffffff;
 }
 
-th,
-td {
-    padding: 15px 18px;
-    text-align: left;
-    border-bottom: 1px solid #e2e8f0;
-    font-size: 14px;
-}
+/* SPIDER-MAN IMAGE */
 
-th {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
+.admin-background-image {
+    position: absolute;
 
-tbody tr:hover {
-    background: #f8fafc;
-}
+    top: 0;
+    right: 0;
 
-.loading-cell,
-.empty-cell,
-.error-cell {
-    text-align: center;
-    padding: 35px 20px;
-    color: #64748b;
-}
-
-.error-cell {
-    color: #dc2626;
-}
-
-.dashboard-message {
-    min-height: 25px;
-    padding: 12px 20px;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-    .site-header {
-        padding: 12px 18px;
-        min-height: 72px;
-    }
-
-    .logo-wrapper img {
-        width: 46px;
-        height: 46px;
-    }
-
-    .logo-text {
-        font-size: 18px;
-    }
-
-    .admin-access-link {
-        padding: 9px 14px;
-        font-size: 12px;
-    }
-
-    .signup-section {
-        min-height: calc(100vh - 72px);
-        padding: 35px 16px;
-    }
-
-    .signup-card {
-        padding: 28px 22px;
-    }
-
-    .signup-heading h1 {
-        font-size: 26px;
-    }
-
-    .hero-section {
-        padding: 55px 20px;
-    }
-
-    .hero-content h1 {
-        font-size: 44px;
-    }
-
-    .hero-content p {
-        font-size: 16px;
-    }
-
-    .admin-login-section {
-        padding: 25px 16px;
-    }
-
-    .admin-login-card {
-        padding: 28px 22px;
-    }
-
-    .admin-dashboard-header {
-        padding: 12px 18px;
-    }
-
-    .admin-header-title h1 {
-        font-size: 18px;
-    }
-
-    .admin-header-title p {
-        display: none;
-    }
-
-    .admin-header-logo {
-        width: 45px;
-        height: 45px;
-    }
-
-    .admin-logout-btn {
-        padding: 9px 14px;
-        font-size: 12px;
-    }
-
-    .admin-dashboard-content {
-        padding: 30px 16px;
-    }
-
-    .dashboard-intro h2 {
-        font-size: 26px;
-    }
-
-    .admin-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .admin-table-header {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .refresh-btn {
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-
-    .logo-text {
-        display: none;
-    }
-
-    .admin-access-link {
-        padding: 9px 12px;
-    }
-
-    .signup-card {
-        padding: 25px 18px;
-    }
-
-    .hero-content h1 {
-        font-size: 38px;
-    }
-
-    .admin-stat-card {
-        padding: 20px;
-    }
-
-    .stat-icon {
-        min-width: 70px;
-        height: 55px;
-        font-size: 9px;
-    }
-
-    .admin-stat-number {
-        font-size: 32px;
-    }
-
-    .admin-header-left {
-        gap: 9px;
-    }
-}
+    width: 58%
+```
